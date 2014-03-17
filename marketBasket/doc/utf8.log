@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.20)  17 MAR 2014 10:58
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.20)  17 MAR 2014 18:26
 entering extended mode
 **utf8.tex
 (C:\Users\Jon\Documents\GitHub\IGS\marketBasket\doc\utf8.tex
@@ -603,17 +603,17 @@ See the caption package documentation for explanation.
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (C:\Users\Jon\Documents\GitHub\IGS\marketBasket\doc\utf8.aux) ) 
 Here is how much of TeX's memory you used:
- 6574 strings out of 494045
- 91076 string characters out of 3145975
+ 6573 strings out of 494045
+ 91069 string characters out of 3145975
  162089 words of memory out of 3000000
- 9776 multiletter control sequences out of 15000+200000
- 7267 words of font info for 30 fonts, out of 3000000 for 9000
+ 9775 multiletter control sequences out of 15000+200000
+ 6662 words of font info for 28 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  36i,6n,43p,248b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on utf8.pdf (1 page, 32214 bytes).
+Output written on utf8.pdf (1 page, 28568 bytes).
 PDF statistics:
  14 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

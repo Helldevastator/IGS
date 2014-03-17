@@ -96,19 +96,34 @@
 
 % Inhalt Start
 
-\section{Einleitung}
-\begin{tabular}{c|c}
-Query Size & Time needed \\
-10000 & 45'489ms\\
-20000 & 77'706ms\\
-40000 & 149'215ms\\
-80000 & 347'096ms\\
+\section{Aufgabe 3}
+\begin{tabular}{r|l}
+Folgende Zeitmessungen haben wir mit unserem Algorithmus gemacht:
+Query Size & Time needed \\\hline \hline
+10'000 & 45'489ms\\\hline
+20'000 & 77'706ms\\\hline
+40'000 & 149'215ms\\\hline
+80'000 & 347'096ms\\
 
 \end{tabular}
-\subsection{Sonderzächön}
-sind mägö cöäl! Hallo "Max" und "Moritz"!
-\section{Damit das Inhaltsverzeichnis funktioniert:}
-\subsection{Immer ZWEI mal Compilieren!!!!!}
+\section{Aufgabe 3}
+Jede Iteration des Algorithmus besteht aus drei Schritten:
+\begin{enumerate}
+	\item neues Wort in die Wortmengen hinzufügen.
+	\item Zählen, wie oft eine Wortmenge vorkommt.
+	\item Wortmengen löschen, welche unter dem Support-Value liegen.
+\end{enumerate}
+
+Das Löschen kann in linearer Zeit durchgeführt werden, es fällt in der Big-O Notation nicht ins Gewicht.\\
+Das Zählen und das Hinzufügen geschehen beides in einer verschachtelten for-Schleife, was eine Laufzeit von $O(n^2)$ vermuten lässt, bei einer genaueren Analyse zeigt sich jedoch ein anderes Bild.
+Für die Analyse sei:
+\begin{enumerate}
+	\item n die Anzahl von Queries
+	\item m die Anzahl Wortmengen, die gezählt werden sollen.
+	\item p die Anzahl Wörter, welche den Support-Value erfüllen.
+	\item q die durchschnittliche Anzahl Wörter in einer Query
+\end{enumerate}
+Daraus ergibt sich die Laufzeit für das Hinzufügen $m*p$ und für das Zählen $n*m*ld q$. $m$ und $p$ verhalten sich quasi asymptotisch zu den Anzahl Queries. Im Unendlichen betrachtet ist die Laufzeit $O(n)$, da $m$ und $p$. Dieses Verhalten spiegelt sich auch in den Zeitmessungen wieder. Bei einer Verdoppelung der Anzahl Queries wird die Laufzeit beinahe verdoppelt. 
 
 
 % Inhalt Ende 
