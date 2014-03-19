@@ -28,11 +28,11 @@ import java.util.Map.Entry;
  * las, vegas
  */
 public class FrequentItemsets {
-	static int numQuery = 10000;
+	static int numQuery = 5000;
 	static int numWords = 3;
 	static double minSupport = 0.0018;
 
-	public static Map<WordBasket, Double> doFrequentItemsetsAnalysis(List<WordBasket> _queries, int _numWords, double _minSupport) {
+	public static Map<WordBasket, Double> doFrequentItemsetsAnalysis(List<WordBasket> _queries, int _numWords, double _minSupport, boolean calcAll) {
 		/*********************
 		 * Insert your code here
 		 * 
@@ -44,99 +44,75 @@ public class FrequentItemsets {
 		 * group of words (WordBasket) and the value their respective support
 		 * (Double).
 		 */
-		//case zero
-		HashMap<String, Item> allWords = new HashMap<>(numQuery >>> 1);
+
+		Map<WordBasket, Double> results = new HashMap<>();
+		ArrayList<WordBasket> items = new ArrayList<>(50000);
+		HashSet<String> words = new HashSet<>();
 
 		//Calculate first level
 		for (WordBasket query : _queries)
-			for (String w : query.words)
-				if (allWords.containsKey(w)) {
-					Item i = allWords.get(w);
-					i.occurences++;
-				} else {
-					Item i = new Item();
-					i.basket = new WordBasket(new String[] { w });
-					i.occurences = 1;
-					allWords.put(w, i);
-				}
+			for (String w : query.words) {
+				if (!words.contains(w)) {
+					words.add(w);
+					WordBasket item = new WordBasket(new String[] { w });
+					double support = (double) countOccurences(_queries, item) / numQuery;
 
-		ArrayList<Item> items = new ArrayList<Item>(allWords.values());
-		calcAndRemoveSupports(items, _minSupport);
-		Collections.sort(items);
+					if (support > minSupport)
+						items.add(item);
+				}
+			}
 
 		String[] level1 = new String[items.size()];
 		for (int i = 0; i < level1.length; i++)
-			level1[i] = items.get(i).basket.words[0];
+			level1[i] = items.get(i).words[0];
 
 		for (int i = 1; i < _numWords; i++) {
-			//long start, end;
-			//start = System.currentTimeMillis();
 			items = createNextLevel(items, level1);
-			//end = System.currentTimeMillis();
-			//System.out.println("create: " + (end - start) + " size:" + items.size());
 
-			//start = System.currentTimeMillis();
-			countOccurences(_queries, items);
-			//end = System.currentTimeMillis();
-			//System.out.println("count: " + (end - start));
+			if (!calcAll)
+				results.clear();
 
-			//start = System.currentTimeMillis();
-			calcAndRemoveSupports(items, minSupport);
-			//end = System.currentTimeMillis();
-			//System.out.println("remove: " + (end - start));
+			for (int j = items.size() - 1; j >= 0; j--) {
+				WordBasket item = items.get(j);
+				double support = (double) countOccurences(_queries, item) / numQuery;
+				if (support > _minSupport)
+					results.put(item, support);
+				else
+					items.remove(j);
+			}
 
 			if (items.size() <= 0)
 				break;
 		}
 
-		Map<WordBasket, Double> results = new HashMap<>(items.size());
-		for (Item i : items)
-			results.put(i.basket, i.support);
-
 		return results;
 	}
 
-	private static ArrayList<Item> createNextLevel(List<Item> current, String[] level1) {
-		HashSet<Item> ret = new HashSet<>(current.size());
+	private static ArrayList<WordBasket> createNextLevel(List<WordBasket> current, String[] level1) {
+		HashSet<WordBasket> ret = new HashSet<>(current.size());
 		for (int k = 0; k < current.size(); k++) {
-			Item cur = current.get(k);
+			WordBasket cur = current.get(k);
 
-			//stupidly create all possible combinations, could be better!!
 			for (int i = 0; i < level1.length; i++)
-				if (!cur.basket.contains(level1[i])) {
-					String[] n = Arrays.copyOf(cur.basket.words, cur.basket.words.length + 1);
-					n[cur.basket.words.length] = level1[i];
+				if (!cur.contains(level1[i])) {
+					String[] n = Arrays.copyOf(cur.words, cur.words.length + 1);
+					n[cur.words.length] = level1[i];
 
-					Item next = new Item();
-					next.basket = new WordBasket(n);
-					next.occurences = 0;
+					WordBasket next = new WordBasket(n);
 
-					//if(!ret.contains(next))
 					ret.add(next);
 				}
 		}
 
-		return new ArrayList<Item>(ret);
+		return new ArrayList<WordBasket>(ret);
 	}
 
-	private static void countOccurences(List<WordBasket> queries, List<Item> items) {
+	private static int countOccurences(List<WordBasket> queries, WordBasket item) {
+		int occurences = 0;
 		for (WordBasket b : queries)
-			for (int j = 0; j < items.size(); j++) {
-				Item i = items.get(j);
-				//n log n, could be less?
-				if (b.containsAll(i.basket))
-					i.occurences++;
-			}
-	}
-
-	private static void calcAndRemoveSupports(List<Item> items, double minSupport) {
-		//calc and remove low support
-		for (int i = items.size() - 1; i >= 0; i--) {
-			Item item = items.get(i);
-			item.support = (double) item.occurences / numQuery;
-			if (item.support < minSupport)
-				items.remove(i);
-		}
+			if (b.containsAll(item))
+				occurences++;
+		return occurences;
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -145,7 +121,7 @@ public class FrequentItemsets {
 		//perform analysis for baskets of 3 words
 		long startTime = System.currentTimeMillis();
 
-		Map<WordBasket, Double> result = doFrequentItemsetsAnalysis(queries, numWords, minSupport);
+		Map<WordBasket, Double> result = doFrequentItemsetsAnalysis(queries, numWords, minSupport, false);
 		long endTime = System.currentTimeMillis();
 
 		//print top 20 word baskets
