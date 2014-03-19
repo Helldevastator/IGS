@@ -1,6 +1,5 @@
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -35,12 +34,17 @@ public class AssociationRules extends FrequentItemsets {
 		 * 
 		 * Returns: This method should return a list of AssociationRuleEntry's.
 		 */
+		LinkedList<AssociationRuleEntry> entries = new LinkedList<>();
+		for (WordBasket b : _frequentItemsets.keySet())
+			entries.addAll(powSet(b, _frequentItemsets));
 
-		throw new RuntimeException("This method to be implemented.");
+		return entries;
 	}
 
-	private static void powSet(WordBasket b, Map<WordBasket, Double> frequentItemSets) {
+	private static List<AssociationRuleEntry> powSet(WordBasket b, Map<WordBasket, Double> frequentItemSets) {
 		int max = (int) (Math.pow(2, b.words.length) - 1);
+		LinkedList<AssociationRuleEntry> answer = new LinkedList<>();
+
 		for (int bitset = 1; bitset < max; bitset++) {
 			LinkedList<String> lhs = new LinkedList<>();
 			LinkedList<String> rhs = new LinkedList<>();
@@ -51,9 +55,10 @@ public class AssociationRules extends FrequentItemsets {
 				else
 					rhs.add(b.words[j]);
 			WordBasket lhs_basket = new WordBasket(lhs);
-			AssociationRuleEntry entry = new AssociationRuleEntry(lhs_basket, new WordBasket(rhs), frequentItemSets.get(b), frequentItemSets.get(lhs_basket));
+			answer.add(new AssociationRuleEntry(lhs_basket, new WordBasket(rhs), frequentItemSets.get(b), frequentItemSets.get(lhs_basket)));
 		}
 
+		return answer;
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -65,8 +70,7 @@ public class AssociationRules extends FrequentItemsets {
 		List<WordBasket> queries = readQueries(5000);
 
 		//perform analysis for baskets of 2-4 words
-		Map<WordBasket, Double> frequentItemsets = new HashMap<WordBasket, Double>();
-		frequentItemsets.putAll(doFrequentItemsetsAnalysis(queries, 4, minSupport));
+		Map<WordBasket, Double> frequentItemsets = doFrequentItemsetsAnalysis(queries, 4, minSupport, true);
 
 		prettyPrint(frequentItemsets, 200);
 
