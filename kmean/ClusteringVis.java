@@ -6,7 +6,11 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import javax.swing.JFrame;
@@ -30,7 +34,7 @@ class ClusteringVis extends JFrame {
 
 	private Semaphore runAlgorithm;
 
-	public Type distance = Type.MANHATTEN;
+	public Type distance = Type.EUCLIDIAN;
 
 	public enum Type {
 		EUCLIDIAN, MANHATTEN, WEIGHTED_EUCLIDIAN, CHEBYSHEV, MIN, IRIS, NON_NORM
@@ -44,7 +48,7 @@ class ClusteringVis extends JFrame {
 
 		switch (distance) {
 			case EUCLIDIAN:
-				return Math.sqrt(dx*dx + dy*dy); 
+				return p1.distance(p2);
 			case MANHATTEN:
 				return dx + dy;
 			case WEIGHTED_EUCLIDIAN:
@@ -80,7 +84,75 @@ class ClusteringVis extends JFrame {
 		 * updateClusters(Point2D[])
 		 * with the calculated clusters at the end.
 		 */
-		throw new RuntimeException("This method to be implemented.");
+		
+		/*
+		 * a. Die k Cluster-Schwerpunkte initial verteilen.
+		 * b. Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
+		 * c. Die Cluster-Schwerpunkte anhand aller Cluster-Objekte neu berechnen.
+		 * d. Weiter bei b. bis: sich die Schwerpunkte nicht mehr bewegen.
+		 */
+		Random r = new Random();
+
+		// Die k Cluster-Schwerpunkte initial verteilen.
+		List<Point2D> medians = new ArrayList<>(K);
+		Map<Integer, List<Point2D>> medianPoints = new HashMap<>(2*K);
+		for (int i = 0; i < K; i++) {
+			Point2D p = _points[r.nextInt(_points.length)];
+			medians.add(new Point2D.Double(p.getX(), p.getY()));
+			medianPoints.put(i, new ArrayList<Point2D>());
+		}
+		
+		// Weiter bei b. bis: sich die Schwerpunkte nicht mehr bewegen.
+		boolean changed = true;
+		while (changed) {
+			System.out.println("A");
+			changed = false;
+			
+			// Liste leeren
+			for (Integer p : medianPoints.keySet()) 
+				medianPoints.get(p).clear();
+			System.out.println("B");
+			// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
+			for (int i = 0; i < _points.length; i++) {
+				double minDist = Double.MAX_VALUE;
+				int minPoint = 0;
+				for (Integer p : medianPoints.keySet()) {
+					double dist = calculateDistance(medians.get(p), _points[i]);
+					if (dist < minDist) {
+						minDist = dist;
+						minPoint = p;
+					}
+				}
+				medianPoints.get(minPoint).add(_points[i]);
+			}
+			System.out.println("C");
+			//  Die Cluster-Schwerpunkte anhand aller Cluster-Objekte neu berechnen.
+			for (Integer medP : medianPoints.keySet()) {
+				double sumX = 0, sumY = 0;
+				List<Point2D> points = medianPoints.get(medP);
+				for (Point2D p : points) {
+					sumX += p.getX();
+					sumY += p.getY();
+				}
+				if (Double.compare(sumX, 0.0) == 0 || Double.compare(sumY, 0.0) == 0) {
+					medians.get(medP).setLocation(_points[r.nextInt(_points.length)]);
+				} else {
+					double newX = sumX / (double)points.size(), newY = sumY / (double)points.size();
+					if (Double.compare(newX, medians.get(medP).getX()) != 0 || Double.compare(newY, medians.get(medP).getY()) != 0) {
+						medians.get(medP).setLocation(newX, newY);
+						changed = true;
+					}
+				}
+			}
+			System.out.println("D "+changed);
+			if (changed) {
+				Point2D[] centers = new Point2D[medianPoints.size()];
+				int i = 0;
+				for (Integer c : medianPoints.keySet()) centers[i++] = medians.get(c);
+				updateClusters(centers);
+				System.out.println("update");
+			}
+		}
 	}
 
 	public static void main(String[] _args) throws Exception {
@@ -122,7 +194,7 @@ class ClusteringVis extends JFrame {
 			public void run() {
 				try {
 					for (;; runAlgorithm.acquire())
-						doClustering(points, 7);
+						doClustering(points, 10);
 				} catch (Exception _e) {
 					_e.printStackTrace();
 				}
