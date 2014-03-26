@@ -38,14 +38,15 @@ class ClusteringVis extends JFrame {
 
 	private double calculateDistance(Point2D p1, Point2D p2) {
 		if (p1 == null || p2 == null) return -1;
+		
+		double dx = Math.abs(p2.getX() - p1.getX());
+		double dy = Math.abs(p2.getY() - p1.getY()); 
 
 		switch (distance) {
 			case EUCLIDIAN:
-				double dx = p2.getX() - p1.getX();
-				double dy = p2.getY() - p1.getY(); 
 				return Math.sqrt(dx*dx + dy*dy); 
 			case MANHATTEN:
-				return Math.abs(p2.getX()-p1.getX()) + Math.abs(p2.getY()-p1.getY());
+				return dx + dy;
 			case WEIGHTED_EUCLIDIAN:
 
 			case CHEBYSHEV:
