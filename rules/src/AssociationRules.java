@@ -1,39 +1,41 @@
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 /**********************************************************************
- * Übung 4
+ * Ãœbung 4
  * 
  * Implementieren Sie die Methode doAssociationRulesAnalysis().
  * 
- * Die Resultate sollten für die ersten 5'000 Queries, MIN_SUPPORT=0.0018,
+ * Die Resultate sollten fÃ¼r die ersten 5'000 Queries, MIN_SUPPORT=0.0018,
  * MIN_CONFIDENCE=0.05 etwa folgendermassen aussehen:
  * 
- * SupportLHS Confidence LHS => RHS 6.4800% 53.7037% {american} => {idol}
- * 6.4800% 29.9383% {american} => {airlines} 6.4800% 6.7901% {american} =>
- * {express} 5.7400% 18.4669% {free} => {porn} 5.7400% 18.4669% {free} => {sex}
- * 5.7400% 14.6341% {free} => {games} 5.7400% 10.4530% {free} => {photos}
- * 5.7400% 10.1045% {free} => {photos, sex} 5.7400% 8.3624% {free} => {pics}
- * 5.7400% 7.6655% {free} => {cards} 5.7400% 6.6202% {free} => {credit} 5.7400%
- * 6.2718% {free} => {report} 5.7400% 6.2718% {free} => {downloads} 5.7400%
- * 6.2718% {free} => {credit, report} 5.7400% 6.2718% {free} => {music} 5.7400%
- * 5.2265% {free} => {e} 4.5400% 71.3656% {map} => {quest} 4.5400% 12.7753%
- * {map} => {of} 3.8800% 24.7423% {of} => {america} 3.8800% 24.2268% {of} =>
- * {bank}
+ * SupportLHS Confidence LHS => RHS 
+ * 6.4800% 53.7037% {american} => {idol}
+ * 6.4800% 29.9383% {american} => {airlines} 
+ * 6.4800% 6.7901% {american} => {express} 
+ * 5.7400% 18.4669% {free} => {porn} 
+ * 5.7400% 18.4669% {free} => {sex}
+ * 5.7400% 14.6341% {free} => {games} 
+ * 5.7400% 10.4530% {free} => {photos}
+ * 5.7400% 10.1045% {free} => {photos, sex} 
+ * 5.7400% 8.3624% {free} => {pics}
+ * 5.7400% 7.6655% {free} => {cards} 
+ * 5.7400% 6.6202% {free} => {credit} 
+ * 5.7400% 6.2718% {free} => {report} 
+ * 5.7400% 6.2718% {free} => {downloads} 5.7400% 6.2718% {free} => {credit, report} 
+ * 5.7400% 6.2718% {free} => {music} 5.7400% 5.2265% {free} => {e} 
+ * 4.5400% 71.3656% {map} => {quest} 
+ * 4.5400% 12.7753% {map} => {of} 
+ * 3.8800% 24.7423% {of} => {america} 
+ * 3.8800% 24.2268% {of} => {bank}
  */
 public class AssociationRules extends FrequentItemsets {
 	public static List<AssociationRuleEntry> doAssociationRuleAnalysis(List<WordBasket> _queries, Map<WordBasket, Double> _frequentItemsets, double _minConfidence) {
-		/*********************
-		 * Insert your code here
-		 * 
-		 * Args: _queries: The list of queries done by users _frequentItemsets:
-		 * The most frequent itemsets
-		 * 
-		 * Returns: This method should return a list of AssociationRuleEntry's.
-		 */
+		
 		LinkedList<AssociationRuleEntry> entries = new LinkedList<>();
 		for (WordBasket b : _frequentItemsets.keySet())
 			entries.addAll(powSet(b, _frequentItemsets));
@@ -68,7 +70,10 @@ public class AssociationRules extends FrequentItemsets {
 
 		//read the first 5'000 queries
 		List<WordBasket> queries = readQueries(5000);
-
+		
+		// calculate unique words and queries
+		calcAndPrintUniqueCounts(queries);
+		
 		//perform analysis for baskets of 2-4 words
 		Map<WordBasket, Double> frequentItemsets = doFrequentItemsetsAnalysis(queries, 4, minSupport, true);
 
@@ -85,6 +90,27 @@ public class AssociationRules extends FrequentItemsets {
 		//print benchmark time
 		System.out.println();
 		System.out.println("Took " + (endTime - startTime) + "ms");
+		
+		
+	}
+	
+	public static void calcAndPrintUniqueCounts(List<WordBasket> queries) {
+
+		Map<WordBasket, Integer> uniqueQueries = new HashMap<>();
+		Map<String, Integer> uniqueWords = new HashMap<>();
+		
+		for (WordBasket wb : queries) {
+			if (uniqueQueries.containsKey(wb))  	uniqueQueries.put(wb, uniqueQueries.get(wb) + 1);
+            else 									uniqueQueries.put(wb, 1);
+			
+            for (String word : wb.words) {
+                if (uniqueWords.containsKey(word))  uniqueWords.put(word, uniqueWords.get(word) + 1);
+                else 								uniqueWords.put(word, 1);
+            }
+        }
+		
+        System.out.println("unique query count: " + uniqueQueries.size());
+        System.out.println("unique word count: " + uniqueWords.size());
 	}
 
 	//prints "nicely" formatted results
