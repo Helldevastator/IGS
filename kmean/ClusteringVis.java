@@ -30,33 +30,22 @@ class ClusteringVis extends JFrame {
 
 	private Semaphore runAlgorithm;
 
-	public Type distance = Type.EUCLIDIAN;
+	public Type distance = Type.MANHATTEN;
 
 	public enum Type {
 		EUCLIDIAN, MANHATTEN, WEIGHTED_EUCLIDIAN, CHEBYSHEV, MIN, IRIS, NON_NORM
 	};
 
 	private double calculateDistance(Point2D p1, Point2D p2) {
-
 		if (p1 == null || p2 == null) return -1;
-
-		/*********************
-		 * Insert your code here
-		 * 
-		 * 
-		 * Args:
-		 * p1: Point1
-		 * p2: Point2
-		 * 
-		 * Returns:
-		 * a distance between p1 and p2 (euklid,manhatten ...)
-		 */
 
 		switch (distance) {
 			case EUCLIDIAN:
-
+				double dx = p2.getX() - p1.getX();
+				double dy = p2.getY() - p1.getY(); 
+				return Math.sqrt(dx*dx + dy*dy); 
 			case MANHATTEN:
-
+				return Math.abs(p2.getX()-p1.getX()) + Math.abs(p2.getY()-p1.getY());
 			case WEIGHTED_EUCLIDIAN:
 
 			case CHEBYSHEV:
