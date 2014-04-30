@@ -1,0 +1,23 @@
+Karriereplaner
+Die Firma x28 sammelt Daten im Bereich von offenen Stellen und Personaldienstleistungen. Diese Daten werden von x28 über verschiedene Tools für den jobsuchenden Endkunden oder arbeitnehmersuchenden Arbeitgeber angeboten. Dazu werden die Daten in verschiedener Weise genutzt und präsentiert. Der grosse Datenstamm, in welchem auch Auszüge aus Lebensläufen vorhanden sind, führt zu immer neuen Ideen für deren Nutzung. Der Karriereplaner stellt dabei eine Müglichkeit dar, die Lebenslaufdaten für einen Benutzer zu erschliessen. Dabei soll der Benutzer in den Daten nach Jobs und Möglichkeiten, welche von einer Jobposition ausgehen, suchen können. Das Resultat soll in Form eines Graphen dargestellt werden. Dabei sind die einzelnen Knoten Ausbildungen oder Jobpositionen und die Kanten sind Wechsel zwischen Jobpositionen, Eintritte in die Berufswelt nach einer Ausbildung oder Wechsel zwischen den Ausbildungen.
+Karriereplaner
+
+
+Es soll ein webbasiertes Tool entwickelt werden, welches mögliche Wege von der aktuellen Position hin zum Wunsch-Job aufzeigt. Als Datenbasis dienen gesammelte Lebensläufe. Der Karriereplaner erfüllt folgende Use- Cases:
+
+    Suche nach Start-Position: Aufzeigen von möglichen Wegen zu anderen Jobs
+    Suche nach Ziel-Position: Aufzeigen von möglichen Wegen zu einem Wunsch-Job
+    Suche nach Start und Zielposition: Aufzeigen von möglichen Wegen, um zum Wunsch-Job zu gelangen
+    Suche nach Ausbildungen und mögliche Einstiege in die Berufswelt
+
+Er ist einfach in der Bedienung und funktioniert "spielerisch"
+
+
+    Graphalgorithmen wie z.B. ForceAtlas2
+    Graphdatenbank Neo4j
+    Java, Servlet
+    Html, CSS, JavaScript
+
+
+
+Der Karriereplaner ist mit HTML, CSS, JavaScript (inkl. Algorithmen für Filter und Layout) auf der Browserseite und mit Java und Neo4j auf der Serverseite umgesetzt.

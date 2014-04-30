@@ -1,0 +1,21 @@
+Compiler
+
+IML ist eine imperative Sprache und wurde von Dr. Edgar Lederer zu akademischen Zwecken entwickelt. Verwendung findet die Sprache in verschiedenen Kursen an der FHNW und an der Universität Basel. Als Zielsetzung dieser Arbeit gilt einerseits die Erweiterung der Sprache IML, wobei die Grundkonzepte und Eigenschaften dieser Sprache weiterverfolgt werden sollen. Andererseits soll ein Compiler für die neu entwickelte Sprache implementiert werden. Der Compiler wurde mit Scala entwickelt und kompiliert die IML OO Quelldateien zu .class-Dateien, die auf der Java Virtual Machine (JVM) ausgeführt werden können.
+
+
+    Scala
+    Compiler
+    IML OO
+    Objektorientierte Sprache
+    Java Virtual Machine (JVM)
+
+
+
+Erweiterung der Sprache IML um Objektorientierung. Dabei sollen die Grundkonzepte und Eigenschaften, insbesondere die strenge Spezifikation (z.B. explizite Initialisierung, Flussrichgungssteuerung usw.), die vorallem im Sinn der Programmverikfikation ist, der existierenden Sprache berücksichtigt und soweit als möglich weiterverfolgt werden. Ein Compiler fü die neu entwickelte objektorientierte Sprache (IML OO) soll implementiert werden. Dabei ist offen, für welche Zielarchitektur der Compiler Kompilate erstellt.
+
+
+Die Sprache IML wird in den Unterrichtsfolien für das Modul cpib (Compilerbau) an der FHNW von Dr. Edgar Lederer vorgestellt und deren Eigenschaften und Konzepten dargelegt. Eine genaue Spezifikation der Sprache ist nicht gegeben. Es existieren bereits etliche Implementationen von Compilern für die Sprache IML mit diversen Erweiterungen. Diese wurden (und werden immernoch) von den Studierenden als Arbeiten im Rahmen des Moduls cpib entwickelt.
+
+
+Es wurde eine objektorientierte Sprache entwickelt. Dabei wurden verschiedene Konzepte für die Erweiterung der Sprache evaluiert. Die Sprache IML OO ist vollständig rückwärtskompatibel zur Sprache IML. Die Spezifikation der Sprache und deren Kontexteinschränkungen wurden festgehalten. Entwickelt wurde ein Compiler, der Kompilate für die Java Virtual Machine erstellt. Diese Kompilate können von anderen Sprachen wie zum Beispiel Java oder Scala weiterverwendet werden.
+

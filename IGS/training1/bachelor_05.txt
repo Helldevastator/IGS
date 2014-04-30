@@ -1,0 +1,23 @@
+Development Process Cockpit
+
+
+Das Unternehmen Zuehlke Engineering AG entwickelt unter anderem Software für medizinische Zwecke. Dabei ist es sehr wichtig viele Qualitätsvorschriften einzuhalten. Um diesen gerecht zu werden ist das Ziel der Arbeit ein Cockpit zu entwickeln, welches einem Projektleiter schnell auf einem Tablet aufzeigt, wie weit ein Projekt vorangeschritten ist.
+
+
+    C#
+    XAML
+    Team Foundation Server
+    Windows Store App
+    REST Web API
+
+
+
+Ziel des Projekts ist es eine Software für ein Tablet zu erstellen, welche dem Projektleiter schnell eine Übersicht des Projektes, welche auf dem Team Foundation Server abgelegt ist, liefert. Dabei soll die Software visuell die Vorgehensweise nach V-Modell aufzeigen.
+
+
+Mobile Geräte als Benutzerschnittstellen zu zentralen oder Cloud-basierten Services werden auch in der Software-Entwicklung immer wichtiger. Projektverantwortliche wollen mit dem Tablet in der Sitzung oder unterwegs jederzeit den aktuellen Projektstand beurteilen können.
+
+Zühlke entwickelt Software für medizinische Geräte mit Entwicklungsprozessen, die auf dem V-Modell und Scrum basieren. Um die Sicherheit von Patienten und Anwendern zu gewährleisten, sind strenge Normen einzuhalten. Diese schreiben ein Qualitätsmanagement vor, zu dem eine normgerechte Doku- mentation, Risk Management und die Rückverfolgbarkeit der Requirements sowie Tests gehören.
+
+
+Das Ergebnis ist ein Windows Store App welches auf einem Windows 8.1 Tablet läuft. Eine direkte Verbindung von Client zum Server war nicht möglich. Darum haben wir diese Schwierigkeit über einen Webservice gelöst: Der Client greift über diesen Webservice auf den TFS zu. 

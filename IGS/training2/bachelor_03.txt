@@ -1,0 +1,20 @@
+Video Streaming Web Application
+
+
+Die CDLab arbeitet bereits daran, ihre Desktopsoftware WinCan ins Web zu portieren. Deshalb wird in einem analytischen Teil die bestehende Implementierung untersucht und danach ein Konzept erarbeitet und umgesetzt, das ein vereinfachtes Model der kompletten Software mit modernsten Webtechnologien darstellt.
+
+
+.NET/C#, JavaScript, Silverlight, Video Streaming, IIS, HTML5
+
+
+Da die bisherige Datensicherung sehr aufwändig ist, soll dies durch eine Webapplikation erheblich vereinfacht werden. Folgende Probleme sind zu lösen:
+
+    Die Wiedergabe von Videos auf verschiedenen Endgeräten mit unterschiedlich schnellen Datenleitungen zu ermöglichen.
+    Eine desktopähnliche Webapplikation mit schnellen Reaktionszeiten zu schaffen, um ein gutes Benutzererlebnis zu erzeugen.
+
+
+
+Die Firma CDLab AG in Murten ist einer der führenden Softwarehersteller in der Kanalinspektionsbranche. Bei einer modernen Kanalinspektion werden verschiedenartige Daten erfasst, insbesondere Videodaten, Textdaten sowie Sensordaten (wie z.B. die Neigung des Kanalabschnittes). Diese Daten werden bisher noch bei vielen Stadtverwaltungen auf DVD gebrannt und dann archiviert. Die Verwaltung dieser Daten und der Zugriff ist daher sehr umständlich.
+
+
+Diese Bachelor Thesis beschäftigte sich mit der Portierung einer Desktopsoftware ins Web. In einem ersten Teil wurde eine bereits bestehende Teilimplementierung analysiert. In einem zweiten praktischen Teil wurde ein vereinfachter Prototyp einer Webapplikation mit modernen Technologien erstellt. 

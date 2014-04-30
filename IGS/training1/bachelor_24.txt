@@ -1,0 +1,35 @@
+Augmented Reality - Visualisierung eines Bauprojekts im Livebild der Kamera von Smartphones
+
+
+Das Projekt beschäftigt sich mit der Entwicklung einer Applikation zur Visualisierung des Bauprojekts Mittim Effretikon im Livebild der Kamera von Smartphones. Die implementierte Lösung umfasst eine WebApp für Android und IOS Smartphones in Form einer optimierten Webseite, sowie die Umsetzung der Visualisierung in der Applikation Junaio. Die Lösung kann verwendet werden, um die Überbauung an drei Standorten in Effretikon zu betrachten. Darüber hinaus enthält sie Informationen und interaktive Elemente zu den Themen Energie, Verkehr und Nutzung im Kontext des Bauprojekts.
+
+
+Augmented Reality, Visualisierung durch Smartphonekamera, WebApp, Metaio, Aurasma,
+
+
+Das Bauprojekt soll schematisch in das Livebild der Smartphonekamera eingeblendet werden und dem User so ermöglichen einen Eindruck von den Dimensionen der Baukörper zu erhalten.
+
+Der User soll durch benutzerfreundliche Abläufe in die App eingeführt werden und eine gute User Experience erfahren. Dies ist besonders Wichtig, da die App Teil der Öffentlichkeitsarbeit vos Bauprojekts ist.
+
+Ein State of the Art Dokument enthält die Ergebnisse der Recherchen im Rahmen dieses Projekts zu Augmented Reality Produkten und SDKs und wird der FHNW ausgehändigt.
+
+
+Die App soll die oben beschriebene Einblendung an drei Standorten ermöglichen. An den Standorten werden Plakate aufgestellt sein, welche den Zugriff auf die App kommunizieren.
+Die Einzublendenden Graphien werden vom Auftraggeber zur Verfügung gestellt.
+
+
+Der User erhält über QR-Codes auf einem Plakat den Zugang zur Applikation Junaio, welche er zuerst installieren muss und in einem 2. Schritt Zugriff auf die WebApp.
+
+Die WebApp ist mit HTML5, CSS und JavaScript umgesetzt. Sie enthält unter anderem
+
+    ein Tutorial, welches unter Einbezug der Zieluser erarbeitet wurde und so einen Einstieg in die App ermöglicht.
+
+    eine Karte mit den zukünftigen Gebäuden und den drei Standorten. Die Standorte sind anklickbar und öffnen ein Menü, das auf weitere Informationen und die Kamera weiterführt.
+
+    Informationen zum Bauvorhaben und der App, sowie zu den Themen Energie, Nutzung und Verkehr.
+
+    interaktive Elemente (einen Höhenvergleich der Gebäude mit bestehenden Objekten, einen Drohnenfilm welcher die Aussicht aus einem geplanten Hochhaus als Panorama visualisiert, Zitate von Effretikern, sowie eine Animation "Warum verdichtet bauen?").
+
+    Verlinkung auf den jeweilgen Junaio-Channel (ein solcher Channel enthält eine der drei Einblendungen) mit einer vorgängig gezeigten Anweisung, wie die Kamera ausgerichtet werden soll.
+
+Die Einblendungen sind mit Hilfe der Applikation Junaio, der Firma Metaio GmbH umgesetzt.

@@ -1,0 +1,18 @@
+MechTabMobile
+Zusammenfassung
+Die Firma Samuel Werder AG, Spezialist für CNC-Feinwerktechnik, bietet die Desktop-Software MechTab als Nachschlagewerk für den Polymechaniker an. Im Rahmen dieser Bachelor-Arbeit werden Teile dieser Software mit der Hybridtechnologie «Appcelerator Titanium» als mobile Applikation für iPhone und Android konzipiert und umgesetzt.
+
+Programmiersprache: 	Javascript
+Entwicklungsumgebung: 	Titanium Studio
+SDK: 	Antroid SDK, iOS SDK, Appcelerator Titanium
+Testgeräte: 	Samsung Galaxy S2, iPhone 3GS, iPhone 4S
+
+
+Die bestehende Desktop-Software soll in Form einer Smartphone-App verbessert werden, sodass kein Mechaniker und Mechanik-Einkäufer in Zukunft darauf verzichten möchte. Nicht zuletzt soll die Samuel Werder AG die App auch als Werbemittel einsetzen können.
+Zusätzlich soll in dieser Bachelor-Arbeit ein spezielles Augenmerk auf die Erweiterbarkeit der Applikation gelegt werden. Es soll nach einer «Single-Source-Strategie» verfahren werden, bei der für iPhone wie für Android der selbe Quellcode zum tragen kommen soll. Hierfür existieren verschiedene Technologien, welche analysiert werden und aus welchen die für dieses Projekt geeignetste Technologie ausgewählt werden soll.
+
+
+In einer ersten Phase sollen in enger Zusammenarbeit mit dem Kunden die Anforderungen an die neue App ermittelt und definiert werden. Dabei sollen zusätzlich bestehende Tools, die bereits bei den Mitarbeitern im Einsatz sind, untersucht werden. Anschliessend sollen aus den Anforderungen eine geeignete Technologie evaluiert werden. Parallel dazu können Usability- und Software-Konzepte erarbeitet werden. Mittels Papierprototypen und ersten Technologie-Tests sollen diese Konzepte dann verifiziert werden, um abschliessend mit diesen Erkenntnissen die Applikation implementieren zu können.
+
+
+Zur Zufriedenheit des Kunden konnte eine funktionstüchtige Applikation für iPhone und Android präsentiert werden. Für MechTabMobile wurde eine Bibliothek mit UI-Elementen entwickelt, die es erlaubt, Benutzeroberflächen ohne plattformspezifischen Code zu erstellen. Dabei wurden Schwachstellen von Titanium aufgezeigt und Verbesserungsansätze implementiert. Nebenbei entstand ein Framework, das dank definierter Schnittstellen nicht zuletzt auch eine bessere Erweiterbarkeit der App ermöglicht.

@@ -1,0 +1,39 @@
+Effiziente parallele Dosisberechnung in Scala
+
+Am PSI werden tiefliegende Tumore mittels der Protonenstrahltherapie behandelt. Um für einen Patienten die bestmöglichen Ergebnisse zu erreichen, wird die Bestrahlung im Vorfeld der Therapie geplant, was die wiederholte Berechnung der resultierenden Dosis benötigt. Im Rahmen dieser Arbeit wurden mehrere Möglichkeiten evaluiert, um diese Berechnung zu beschleunigen. Dazu wurden unterschiedliche Varianten mit Scala auf der JVM sowie mit nativem OpenCL und Aparapi für OpenCL-fähige Geräte implementiert und die Ergebnisse miteinander verglichen.
+
+
+    Scala 2.10
+    OpenCL
+    Aparapi
+    GPU-Programming
+
+
+Das Ziel des Projektes ist die Gegenüberstellung verschiedener Technologien zur Reduktion der Laufzeit der Dosisberechnung. Das PSI möchte wissen, auf welche Technologie sie in Zukunft setzen sollen, um kurze Berechnungszeiten mit wartbarem Code zu erreichen. Für alle Varianten müssen die Toleranzen des PSI eingehalten werden. Da am PSI bereits viel Code für die JVM vorhanden ist, sollten alle Varianten auf der JVM basieren oder einfach daraus angesprochen werden.
+
+Am PSI wurde bereits ein sequentieller Algorithmus zur Dosisberechnung im Rahmen der Qualitätsicherung entwickelt. Dieser ist in Java Implementiert und nicht auf Performance optimiert. Diese Implementierung gilt im Rahmen dieses Projektes als Referenzimplementierung und wird für die Toleranztests verwendet. Zudem steht eine Bibliothek für das Einlesen der binären Dateien zur Verfügung. Für die Tests stehen drei klinische Testfälle zur Verfügung.
+
+
+Im Rahmen des Projektes wurden folgende Technologien evaluiert:
+
+    Scala auf der JVM
+    OpenCL
+    Aparapi
+
+In der untenstehenden Tabelle sind die kürzesten Laufzeiten für einen der drei Testfälle aufgelistet. Dieser Testfall benötigte mit 32s die längste Ausführungszeit mit der ursprünglichen Version und konnte auf 0.23s reduziert werden.
+
+Name 	Laufzeit Ausgangslage (ms) 	Laufzeit (ms) 	Speedup
+Aparapi on GTX-480 	32232 	227 	141.99
+OpenCL on GTX-480 	32232 	340 	94.8
+Aparapi Bounded Voxelwise on GTX-480 	32232 	431 	74.78
+
+Alle diese Werte wurden auf einer nvidia GTX-480 gemessen. Es wurden jedoch auch die Laufzeiten auf der JVM auf einem Intel Core i7 Q820 verringert. Diese sind in der untenstehenden Tabelle zu sehen.
+
+
+Name 	Laufzeit Ausgangslage (ms) 	Laufzeit (ms) 	Speedup
+Scala Lock Free Plane Wise 	32232 	9349 	3.45
+Scala CAS 	32232 	9621 	3.35
+Scala Locked 	32232 	10042 	3.21
+Scala Sequential 	32232 	27953 	1.15
+
+Ausgeliefert werden die verschiedenen Implementierungen sowie die erzeugten Messergebnisse.

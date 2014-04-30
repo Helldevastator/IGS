@@ -1,0 +1,32 @@
+Patchverwaltung und Autoconfig für Linux Systeme
+
+Das Departement Informatik benötigt ein Patchmanagement Lösung für die Verwaltung und Installation der Sicherheitsupdates. Für die Lösung wurde das Framework MCollective von Puppet Labs eingesetzt. MCollective wird mit Plugins erweitert um alle Anforderungen zu implementieren. Als grafisches User-Interface wird das Linux Programm "Dialog" verwendet. Zusätzlich kann das die Software über die Kommandozeile gesteuert werden. Das System unterstützt sowohl Debian- wie auch RedHat-Distributionen. Die Installation der Updates kann mit Hilfe von Filtern eingegrenzt werden.
+
+
+    Linux Betriebssysteme (Ubuntu, Debian, Fedora, CentOS)
+    MCollective
+    Apache ActiveMQ
+    Apache HTTP Server
+    Shell-Scripting
+    Ruby
+    Dialog
+
+
+
+Mit Hilfe der Patchmanagement Lösung sollen Informationen über Sicherheitsupdates der Server abrufbar sein. Anhand dieser Informationen können die Sicherheitsupdates gezielt auf den Servern installiert werden. Diese Aufgaben sollen durch ein einfaches und intuitives GUI unterstützt werden. Durch den Einsatz von Server-Facts und Filtern können die Aktionen auf die gewünschten Server eingegrenzt werden.
+
+
+Das Departement Informatik der FHNW betreibt zwischen 120 und 150 Linux Server für die Institute und Studiengänge. Das Departement rechnet mit einer steigenden Anzahl von Servern und daher auch mit zunehmendem Wartungsaufwand. Die wachsende Zahl der Server kann nicht mehr manuell auf dem neusten Stand gehalten werden. Der Einsatz einer Software Lösung zur zentralen Verwaltung und Steuerung von Updates auf den Servern ist unumgänglich.
+
+
+Es wurden folgende Ergebnisse erzielt:
+
+    Evaluation von bestehenden Patchmanagement Lösungen
+    Realisation des Patchmanagements mit MCollective
+    Plugins für die Verwaltung, Installation und Informationsbeschaffung der Server und Updates
+    Command Line Interface in Ruby
+    Graphical User Interface mit Dialog
+    Testen der Lösung in virtueller Testumgebung
+    Installationshandbuch
+    Benutzerhandbuch
+    Konzept für Autokonfiguration

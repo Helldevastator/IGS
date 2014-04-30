@@ -1,0 +1,27 @@
+Babelfish Importer
+
+Das IMVS entwickelt auf Basis von Scala 2.10 ein Werkzeug, um den Software-Entwicklungsprozess der Finnova AG zu analysieren (Babelfish). Im Rahmen des Projektes soll ein Importer entwickelt werden, welcher Babelfish mit den Entwicklungsdaten Babelfish-Projektes versorgt, um einen frühen in-House-Einsatz der Lösung zu ermöglichen und so die Qualität zu verbessern ("dogfooding"). Die Lösung wurde in Scala 2.10 entwickelt.
+
+    Scala 2.10
+    Scala Reflection API
+    IntelliJ IDEA
+    Simple Build Tool (SBT)
+    Graph-Datenbanken
+
+Das Ziel des Projektes ist sogenanntes Dogfooding: Durch die Anwendung von Babelfish auf sich selbst kann die Qualität beurteilt und durch den frühen Einsatz auch verbessert werden. Konkret wurden folgende Teilschritte festgelegt:
+
+    Schema der zu erwartenden Daten spezifizieren
+    Source-Code-Dateien, CI-Build-Ergebnisse und Versionen über bereitgestellte Schnittstellen der Umsysteme importieren
+    Scala-Source-Code mit einem geeigneten Werkzeug analysiert und Klassen-Abhängigkeitsgraph exportieren
+
+
+Babelfish wird laufend weiterentwickelt. Beim IMVS kommen zur Unterstützung der Entwicklung Jira, Bamboo sowie Git zum Einsatz. Aus diesen Systemen sollen die Daten importiert und aufbereitet werden. Zum Import der gewonnenen Daten in Babelfish steht eine CSV-Schnittstelle bereit, welche Daten nach einem definierbaren Schema importiert.
+
+Im Rahmen des Projektes wurden folgende Features realisiert:
+
+    Commits und Quellcode-Dateien aus dem zentralen Git-Repository importiert, mit den entsprechenden Personen verknüpft
+    Klassen und Abhängigkeiten im Scala-Source-Code mit Hilfe des Scala-Compilers erkannt und mit den entsprechenden Dateien verknüpft
+    CI-Builds über die REST-Schnittstelle von Bamboo importiert und mit den entsprechenden Commits im Git-Repository verknüpft
+    Import-Schnittstelle spezifiziert, formell beschrieben (in der Babelfish Schema DSL) und dokumentiert
+
+Ausgeliefert werden die Features in einem Programm, dass auf der Konsole läuft und regelmässig gestartet werden kann. Die CSV-Dateien werden im Dateisystem abgelegt und automatisch durch die Babelfish-Software importiert.

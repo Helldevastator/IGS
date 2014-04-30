@@ -1,0 +1,21 @@
+3D Schmuck-Designer
+
+Das Ziel dieser Bachelor-Thesis war einen 3D-Ring-Konfigurator bzw. -Designer im Web zu entwickeln. Realisiert wurde diese Pionierarbeit mit WebGL, einer Art 3D für den Browser. Das Resultat können Sie hier betrachten.
+
+    Sprachen: HTML, CSS, JavaScript, GLSL
+    Plattform: Browser (Chrome, Mozilla Firefox), pluginlos
+    Frameworks: WebGL (in Browser integriert. Browser-Anbindung an die Grafikkarte), Three.js (Szenegraphen für WebGL in JavaScript, threejs.org)
+
+Ursprüngliche Projekt-Zielbeschreibung:
+Zu einem bestehenden Webshop soll ein grafischer Designer entwickelt werden. Das Frontend muss in seiner Bedienung intuitiv, einfach und vollständig webbasiert sein. Mit Hilfe der Maus oder einer anderen Interaktion soll es dem Benutzer möglich sein, ein Schmuckstück (einen Ring) nach seinen Wünschen zu entwerfen. In jeder Phase wird das Resultat grafisch dargestellt. Zusätzlich wird laufend der Preis des Schmuckstücks errechnet und angezeigt. Für die Bestellung und Herstellung des Produkts sollen am Ende die Daten in geeigneter Form an den Webshop übergeben werden.
+
+Zusätzlich kamen hinzu: Eine (kurze) Machbarkeitsstudie sowie die Recherche und Auswahl der zu benutzenden Technologie.
+
+
+Ursprüngliche Beschreibung:
+Das Web 2.0 entwickelt sich ständig weiter. Neue Interaktionsmöglichkeiten und grafische Visualisierungen eröffnen auch neuartige geschäftliche Opportunitäten. Im vorliegenden Fall geht es um einen interaktiven Webshop für Schmuck. Schmuckstücke, in erster Linie Ringe mit Edelsteinen, sollen online erstellt resp. konfiguriert und manipu-liert werden können. Selbstverständlich soll der Kunde in jedem Stadium des Design–Prozesses das erreichte Resultat betrachten können, idealerweise in 3D.
+
+Das Projektteam hatte für die Entwicklung keine bereits vorhandene Ausgangsbasis.
+
+
+Dem Projektteam war es möglich auf den beschränkten Ressourcen des Browsers (bzw. WebGL) einen ansprechenden 3D-Schmuckdesigner zu entwickeln. Das Ring-3D-Modell wird fortlaufend gemäss den Benutzereingaben berechnet. Der Benutzer hat im Rahmen der ihm zur Verfügung gestellten Optionen eine volle Konfigurationsfreiheit. Sämtliche Änderungen des Benutzers im GUI sind sofort in 3D repräsentiert. Der aktuelle Ring ist fortlaufend in der URL repräsentiert, d.h. die URL steht für die aktuelle Ring-Konfiguration. Eine fiktive, nicht-funktionale Bestellung mit Preisberechnung ist vorhanden. Den Konfigurator dürfen Sie gerne hier ausprobieren.

@@ -1,0 +1,38 @@
+Gebäudemanagement via Smartphones mit NFC
+
+
+Das Ziel der Projektarbeit „Gebäudemanagement via Smartphones mit NFC“ ist ein funktionstüchtiger Demonstrator, mit dem aufgezeigt werden kann, wie eine Zutrittskontrolle mit einem NFC fähigen Smartphone funktionieren kann. Bei der Umsetzung soll auf eine gute Qualität der Lösung mit geeigneten Schnittstellen geachtet werden. Ebenso ist eine saubere Code Dokumentation wichtig.
+
+Programmiersprache: 	Java
+Entwicklungsumgebung: 	SpringSource Tool Suite mit ADT Plug-IN, Spring Roo
+SDK: 	Antroid SDK
+Mobiltelefon: 	Samsung Galaxy S und Samsung Galaxy S2 mit NFC Upgrade (microSD & Antenne)
+
+
+Die Zielsetzung wird stufenweise formuliert und gliederte sich im Wesentlichen in folgende vier Meilensteine:
+
+ 
+
+Beschreiben der In2Pay microSD Karte mit Mifare Daten
+In einem ersten Schritt sollen die von der Firma Siemens zur Verfügung gestellten Mifare Daten gemäss Spezifikation Block für Block auf die In2Pay microSD Karte geschrieben werden. Weiter sollten in das Mifare Template Nutzerinformationen wie die Siemens ID, Namensangaben und Geschlecht dynamisch eingearbeitet werden. Zum Testen erhalten wir einen Türöffner, welcher einen Pieps Ton von sich gibt, sofern korrekte Daten auf das Smartphone geschrieben wurden.
+
+ 
+
+Erstellen einer Android App für Beschreiben der microSD und Kommunikation
+Sobald die microSD erfolgreich beschrieben werden kann, geht es darum, eine einfache Android Applikation zu entwickeln, die es ermöglicht Mifare Daten zu schreiben, diese wieder zu löschen, zu erkennen was für Daten sich auf der Karte befinden und das NFC Interface zu steuern. Weiter müssen Formulare zur Registrierung eines Nutzers und zum Download der Mifare Daten erstellt werden sowie ein Kommunikationsablauf mit dem serverseitigen Java Service für die Übermittlung der Nutzerinformationen, die Authentifizierung sowie den Mifare Daten Download.
+
+ 
+
+Erstellen eines serverseitigen Services für den Datendownload
+Zusammen mit der Android Applikation soll ein Service entwickelt werden, der Registrierungen von einem Smartphone entgegen nehmen, validieren und speichern kann und es zulässt, dass sich ein Nutzer mit gültigen Login Informationen über einen sicheren Kanal die Mifare Daten herunterladen kann.
+
+ 
+
+Erstellen einer Webapplikation für die Verwaltung
+Damit die serverseitigen Informationen aus der Datenbank (erfasste Firmen, Registrierungen und Siemens IDs) auch verwaltet werden können, wird ein Webinterface erstellt, welches es einem Administrator ermöglicht, sämtliche Daten abzurufen und zu modifizieren. Ebenfalls soll für jede Kundenfirma ein Login bestehen, wo nur die der Firma zugewiesenen Registrierungen abgefragt werden können, dies zur Erfassung in der hauseigenen ZuKo der jeweiligen Firma um einen Nutzer mit gültigen Karteninformationen für den Zutritt in der jeweiligen Firma zu berechtigen.
+
+
+Es soll eine neue Lösung für die Zutrittskontrolle bei Gebäuden via Smartphone mit der NFC Technologie erarbeitet werden. Hier existiert bei der Firma Siemens noch keine Lösung. Jedoch erhalten wir bezüglich Mifare ausreichend Informationen, die Informationen auf dem Smartphone sind also die gleichen wie auf einer Zutrittskarte. Zudem sind die Hardwarekomponenten die gleichen, wie beim Zutritt mit einer Karte (Badge), so kann die Funktionalität mit dieser Karte getestet werden.
+
+
+Die Zielsetzungen konnten zur Zufriedenheit des Kunden und vollumfänglich umgesetzt werden. 

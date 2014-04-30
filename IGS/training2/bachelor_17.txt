@@ -1,0 +1,23 @@
+Intralogistik-App mit Datensynchronisation
+
+
+Das Ziel dieser Bachelor-Thesis war die Entwicklung einer auf Android basierender Intralogistik-App, welche die Arbeiter im Hochregallager der Peka-Metall bei der Abwicklung von Lagerprozessen unterstützt.
+
+
+    Sprachen: Java, XML
+    Plattform: Android Development Tools (ADT)
+    Schwerpunkt: Synchronisation von Server und Clients
+
+
+
+In der Firma Peka-Metall entsteht bei der Verwaltung und der Durchführung von Aufträgen im Lager ein beachtlicher Papierberg, zudem sind enorm viele Zwischenschritte für die Abwicklung solcher Lager-Prozesse nötig. Eine mobile Android-Applikation soll realisiert werden, um diesen Papierberg auf ein Minimum zu reduzieren und um auf einige der Zwischenschritte verzichten zu können, sodass die Abwicklung der Prozesse weniger Zeit in Anspruch nimmt.
+Im Zentrum dieser Arbeit steht die Datensynchronisation zwischen den mobilen Clients und dem Server, sowie die Erfassung von Lagerplätzen über einen Barcode-Scanner.
+
+
+Das Ziel der Arbeit war die Eintwicklung einer auf Android basierenden App, welche in der Lage ist Einlagerungs- und Auslagerungsaufträge im Hochregallager zu erledigen, sowie die Durchführung von Inventarisierungen. Für die Abarbeitung solcher Aufträge muss die App in der Lage sein Aufträge und Stammdaten vom Lagerverwaltungssystem-Server zu Laden und diese online, sowie offline abzuarbeiten und den Fortschritt mit dem Server zu synchronisieren.
+Für die Erfassung von Lagerplätzen müssen Barcodes einerseits über einen Bluetooth-Barcodescanner oder alternativ über die interne Kamera des Smartphones erfasst werden können.
+
+
+Entstanden ist eine Android App, mit welcher man Aufträge vom Lagerverwaltungsserver laden und anschliessend mit der App abarbeiten kann. Zudem kann das gesamte Lager mit dieser App inventarisiert werden. Mit der App kann ein Lagerist somit alle bisher gängigen Prozesse im Lager durchführen. Die Daten werden über das erfolgreich umgesetzte Synchronisations-Modul auf dem Server aktuell gehalten.
+Für die Abarbeitung von Aufträgen kann ein Bluetooh-Scanner mit der App verbunden werden und mit diesem gearbietet werden. Alternativ können Barcodes auch über die interne Kamera des Smartphones gescannt werden.
+

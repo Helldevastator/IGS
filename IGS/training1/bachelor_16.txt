@@ -1,0 +1,25 @@
+Mobile Learning Environment
+
+In diesem Projekt wird eine Mobile Learning Environment (MLE) erstellt, die es HK learning ermöglicht, ihre Lernanwendungen auch auf mobilen Geräten anzubieten. Die Umgebung besteht dabei aus einer mobilen Applikation, einer Client-Server Infrastruktur für die Distribution von Inhalten, sowie einer Verwaltungsapplikation für HK learning.
+
+    Obejctive C
+    XCode 4.6
+    iPad
+    iOS SDK 6.1
+    PHP 5.3.22
+    Eclipse
+    MySQL
+
+
+Das Ziel der Projektarbeit Mobile Learning Environment ist eine funktionsfähige, mobile Applikation zu erstellen, die an die Client-Server Infrastruktur angebunden ist. Die mobile Applikation muss auf dem Apple iPad einsetzbar sein, falls möglich aber auch andere Plattformen unterstützen. Für Endbenutzer ist es möglich ihre Lernanwendungen direkt einzusehen und on- und offline zu verwenden. Die Applikation synchronisiert die Daten des Benutzers eigenständig mit dem Server, sodass dieser immer seine aktuellsten Inhalte betrachtet. Das Userinterface soll schlicht aber modern aufgebaut und intuitiv bedienbar sein. Die Client-Server Infrastruktur wird so umgesetzt, dass zukünftige Clients einfach an diese Infrastruktur angehängt werden können.
+
+In dieser Arbeit soll die Mobile Learning Environment von Grund auf entworfen und umgesetzt werden. Die Aufgabe umfasst erstens die Erstellung einer mobilen Applikation für Tablets. Der Fokus liegt dabei auf der Unterstützung des Apple iPads. Die Applikation wird anschliessend zusammen mit HK learning entworfen, um die hohen Anforderungen an die Usability zu erfüllen. Als zweiter Teil dieser Arbeit soll eine Client-Server Infrastruktur erstellt werden, die es der mobilen Applikation und zukünftigen Clients ermöglicht, ihre Daten auf dem neusten Stand zu halten. Für die mobile Applikation und Client-Server Infrastruktur soll evaluiert werden, mit welcher Technologie diese jeweils am besten umgesetzt werden.
+
+In diesem Projekt konnten folgende Resultate erzielt werden:
+
+    Mobile Applikation für das iPad
+    Aufbau der Client-Server Infrastruktur
+    Mehrbenutzerfähigkeit
+    Synchronisation Client-Server
+    On-Offline Verwendung der Lernanwendungen
+    Demo-Bereich für nichtautorisierte Benutzer

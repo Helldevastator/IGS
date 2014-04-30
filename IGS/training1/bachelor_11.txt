@@ -1,0 +1,15 @@
+Binocular Eyetracking
+
+
+Legasthenie ist eine Erkrankung, die starke Einflüsse auf die Augenbewegungen beim Lesen hat. Insbesondere sind zur Erhärtung der Diagnose simultane Aufnahmen beider Augen sinnvoll. Für diese Aufgabe ist ein binokularer Eyetracker erfordert. Da professionelle Geräte teuer sind, wurde eine interne Entwicklung lanciert. Es galt einen video-basierten Prototypen von Grund auf zu entwerfen, der im Stande ist, Augenbewegungen von betroffenen Patienten beim Lesen aufzuzeichnen. Fachkundige Personen sollen anschliessend die aufgezeichneten Daten auswerten können. Das System umfasst eine Industrie-Kamera zur schnellen Video-Akquisition und diverse Infrarot-Leuchtkörper, die um die Lesefläche herum angeordnet sind. Die von der Kamera aufgenommenen Bilder werden verarbeitet, um den Blickpunkt auf der Lesefläche für beide Augen zu ermitteln. Bei einer Video-Akquisition mit einer Framerate von über 100 Hz können die Sakkaden, Regressionen und Unterschiede bezüglich beider Augen mittels Diagrammen visualisiert werden.
+
+
+C++, C#, Imageprocessing, Legasthenie
+
+Zum Ziel wurde gesetzt, dass die technischen Herausforderungen des video-basierten Eyetrackings erfasst werden. Weiter soll ein Prototyp aufgebaut werden, der fähig ist, Augenbewegungen aufzunehmen und diese visuell darzustellen. Dazu muss eine Steuerung zur Video-Akquisition, diverse Bildverarbeitungsroutinen - beispielsweise zur Erfassung der Augen - und und ein Algorithmus zur Blickrichtungsschätzung entwickelt werden.
+
+
+Das System wurde "from scratch" entwickelt.
+
+
+Es konnte ein Prototyp entwickelt werden, der die Augenbewegungen von Patienten unter natürlichen Lesebedingungen (mit leicht eingeschränkter Kopfbewegungsfreiheit) verfolgen kann. Die Daten können mittels Visualisierungs-Tools ausgegeben und entsprechend gedeutet werden. Allerdings konnten in der zur Verfügung stehenden Zeit keine ausführlichen Tests, um die Güte der Blickrichtungsschätzung zu bestimmen, durchgeführt werden.

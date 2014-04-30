@@ -1,0 +1,23 @@
+Single Sign-On auf Linux und diversen Tools
+
+In IT System Umgebungen mit verschiedenen Betriebssystemen im Einsatz (u.A. Windows , GNU/Linux) ist das Identitäts-Management ein Thema: Benutzer werden in den Linux Systemen erfasst. Sie haben jedoch bereits eine Identität für Windows und andere Windows Dienste und werden in Active Directory verwaltet. Ausserdem muss ein Administrator auf jedes GNU/Linux System Passwörter und uid Nummern verwalten. Die uid Nummern sollen bei jedem System gleich sein, was bei einer grossen Anzahl von Linux Systemen aufwendig ist. Hat ein Benutzer für verschiedene Systeme ein Passwort, so muss er sich verschiedene Passwörter merken. Das Vergessen dieser Passworte kann nicht vermieden werden. Der Administrator muss dann n Systeme anpassen, wenn n Passwörter vergessen werden. Wird der Active Directory von einer anderen Instanz betrieben, so muss eine Lösung gefunden werden, die keine administrativen Berechtigungen auf Active Directory benötigt. Werden folgende Punkte erfüllt, so können sich Benutzer mit dem gleichen Passwort an Linux Systemen anmelden:
+
+    Es wird eine LDAP Verzeichnisdiensts-Implementierung benötigt, die die Authentisierung an Active Directory weiterleiten kann.
+    Linux Systeme werden so konfiguriert, dass das Authentisieren über den LDAP Verzeich- nisdienst betätigt wird.
+    Die Benutzer Posix Account Attribute werden im LDAP Verzeichnis verwaltet.
+
+Die Capability eines Benutzers wird in einem "host" Attribut verwaltet und dient für die Autorisierung auf den Linux Systemen.
+
+
+LDAP, Active Directory, OpenDJ, PTA, Posix Schema, Authentisierung, PAM, GNU/Linux, Ubuntu, Debian, CentOS
+
+
+Benutzer aus dem Active Directory der FHNW können als Benutzer den jeweiligen Linux Systemen zugewiesen werden. Bei den meistverwendeten Tools werden Active Directory Benutzer unterstützt (Icinga, Nconf, phpmyadmin, Tomcat).
+
+Benutzer aus Active Dierctory werden für das Anmelden an den Linux Systemen zugewiesen, so dass für die Anmeldung dasselbe Passwort gilt. Active Directory wird weder verändert noch erweitert.
+
+
+Der Support des Departementes Informatik der FHNW stellt den Informatik- Instituten und dem Studiengang eine virtuelle Infrastruktur zur Verfügung. Meistens werden Linux Maschinen mit Ubuntu verwendet. Die Logins werden jedes Mal separat erstellt .
+
+
+Der Einsatz eines LDAP Verzeichnisdiensts für die Authentisierung und Speicherung der nötigen Benutzer-Attribute stellt für die Benutzer, welche in Active Directory verwaltet sind, eine Möglichkeit dar, sich mit dem gleichen Passwort an Linux Maschinen anzumelden. Dabei wird Active Directory weder verändert noch erweitert. Die Linux Maschinen authentisieren die Benutzer gegenüber dem LDAP Verzeichnisdienst und holen zugleich die nötigen Attribute aus dem LDAP Verzeichnis: Home directory, login shell, uid, gid, host, Gruppen Zugehörigkeit. Ein "host" Attribut dient als Fähigkeit des Benutzers, welche für die Autorisierung auf den Linux Maschinen gebraucht wird. Die LDAP Verzeichnisdiensts-Implementierung muss die BIND Operation an Active Dirctory weiterleiten können. Der OpenDJ Verzeichnisdienst hat sich als potenzieller Kandidat für den Einsatz in einer produktiven Umgebung bestätigt. 

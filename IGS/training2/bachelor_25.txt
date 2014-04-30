@@ -1,0 +1,26 @@
+Android App für gango.com Web Marketplace
+
+
+Die Firma gango.com AG mit Sitz in Basel entwickelt und betreibt eine Plattform für das Ausschreiben und Anbieten von lokalen Dienstleistungen und Aufträgen für Private und Firmen. Das Ziel der Arbeit, ist es eine native Android Applikation für den gango.com Web Marketplace zu entwickeln. Implementiert wurden die drei Ausschreibungstypen (Rückwärtsauktion, Sofortvergabe, Offerten) und deren Ausschreibung und Annahme. Zudem ist es möglich neue Benutzer zu erstellen, Ausschreibungen in der Umgebung zu suchen und seine eigenen Ausschreibungen und Angebote zu verfolgen. Dazu wurde auch auf ein ansprechendes Benutzererlebniss Wert gelegt.
+
+
+Java, Android, REST, XML, JSON, Google Maps API, Reverse Geocoding
+
+Basierend auf der existierenden iPhone App soll eine native Android App entwickelt werden, wel-che dieselbe Funktionalität unterstützt. Der Zugriff auf den Server erfolgt dabei über ein REST API (JSON), welches zusammen mit der nativen iPhone App entwickelt worden ist. Bei Bedarf muss dieses REST API angepasst und erweitert werden.
+
+    Ausschreibungen erstellen (Rückwärtsauktion, Sofortvergabe): Es soll möglich sein über die Applikation Ausschreibungen zu erstellen
+    Auf Ausschreibungen bieten/annehmen (Rückwärtsauktion, Sofortvergabe): Es soll möglich sein über die Applikation auf Ausschreibungen zu bieten oder diese anzunehmen
+    Benutzer erstellen, Login, Logout: Der Benutzer soll einen Account bei gango.com erstellen und sich ein und auslogen können.
+    Meine Ausschreibungen, Meine Offerten: Mit der Applikation soll es möglich sein seine eigenen Ausschreibungen und Offerten zu verfolgen
+
+
+
+Der Marktplatz bringt Dienstleistungsanbieter und Nachfrager geolokalisiert zusammen und unterstützt Auftraggeber in der Auftragsvergabe von der Ausschreibung bis zur Bewertung. Auftragnehmern dient der Handelsplatz mit effizienten und fairen Akquisition-Mechanismen. Der Marktplatz wurde speziell für den globalen Handel - also Sprach-, Währung-, Zeit- und Ortsunabhängig konzipiert und trägt insbesondere den geographischen Aspekten beim Handel von Dienstleistungen Rechnung. Geolokalisierung gehört zu den USPs der Plattform. Die Plattform wurde in enger Zusammenarbeit mit der FHNW kontinuierlich weiterentwickelt. Um das Ausschreiben von lokalen Kleinaufträgen, sowie das Bieten oder Annehmen eines Auftrages möglichst angenehm und einfach für mobile Benutzern zu gestalten, wurde eine iPhone App realisiert die noch dieses Jahr im Apple Store verfügbar sein wird.
+
+
+In dieser Bachelor Arbeit wurden folgende Resultate erreicht
+
+    Ausschreibungen erstellen (Rückwärtsauktion, Sofortvergabe, Offerten)
+    Auf Ausschreibungen bieten/annehmen (Rückwärtsauktion, Sofortvergabe, Offerten)
+    Benutzer erstellen, Login, Logout
+    Meine Ausschreibungen, Meine Offerten, Meine Deals

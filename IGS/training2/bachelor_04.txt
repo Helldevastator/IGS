@@ -1,0 +1,17 @@
+Scribble Pad
+
+
+Metadaten, Lift (Webframework in Scala), JavaScript, HTML5
+
+
+Das Institut für 4D-Technologien (i4Ds) ist verschiedentlich an Integrations- und Analyseprojekten von Sonnen- und Meteodaten beteiligt (z.B. helio-vo.eu). Dabei geht es darum Daten von verschiedenen Quellen zu verknüpfen und so neue wissenschaftliche Erkenntnisse zu gewinnen. Aus diesen Erkenntnissen werden gegebenenfalls wissenschaftliche Papers erstellt.
+
+Diese Aufgabe ist mit viel Handarbeit verbunden. Daten von einer Tabelle werden als Eingabe-Parameter für Web-Formulare oder Analysefunktionen verwendet. Deshalb liegt neben dem Computer der Wissenschaftlerinnen und Wissenschaftler oft ein Notizblock wo sie diese Informationen "zwischenspeichern".
+
+Notizen bzw. Erkenntnisse werden unter Umständen mit Kollegen z.B. mit Hilfe eines Whiteboards besprochen.
+
+
+Im Ramen der Arbeit sollen verschiedene Varianten für einen Notizblock geprüft und prototypisch implementiert werden. Einzelne Werte und Wertebereiche müssen einfach aus verschiedenen Quellen gesammelt und mit Metainformationen annotiert werden können. Nachher müssen die Werte einfach an neuen Orten eingesetzt werden können. Zudem sollen die Notizbücher mit anderen Personen geteilt und gemeinsam gepflegt werden. Die Applikation soll in einem Browser laufen und kann bespielsweise als Javascript-Modul oder als Firefox-/Chrome-Plugin implementiert werden.
+
+
+Während dieser Arbeit wurde ein Prototyp als eine Webapplikation auf Basis von Scala/Lift mit einem Webinterface auf Basis von HTML5 und JavaScript/TwitterBootstrap und ein Browserplugin für den Browser Chrome erstellt. 

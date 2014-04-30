@@ -1,0 +1,45 @@
+Karten-Integration in ERP-System
+Prof. Dr. Wolfgang Weck, IMVS
+
+MapIntegration
+Karten-Integration in ERP-System
+
+
+Kartenbasiertes Visualisierungs- und Bearbeitungswerkzeug für Datenbank-Entitäten mit Geo-Koordinaten, als Erweiterung für ein bestehendes ERP-System.
+
+
+    .NET / C#
+    WPF
+    MSSQL
+    Visual Studio 2013
+    Bing Maps
+    Drag & Drop
+
+
+
+In die Benutzeroberfläche des .NET-basierten ERP-Systems sollen von einem professionellen Dienst bereitgestellte geographische Karten eingebunden werden. Die Informationen über die in der Karte anzuzeigenden Objekte sind in den Datenbanken des ERP-Systems abgelegt und müssen dort gelesen und geschrieben werden. Diese Konzepte müssen in C# umgesetzt werden.
+
+    relevante Geschäftsprozesse verstehen und daraus konkrete Anforderungen ableiten
+    ein Benutzungskonzept entwerfen und mit geeigneten Mitteln nachweisen, dass es von relevanten Nutzern als ansprechend und nutzbringend empfunden wird
+    am Markt tätigen Anbieter evaluieren, der den ermittelten technischen und kommerziellen Anforderungen der Encontrol genügt
+    das Konzept zumindest prototypisch, jedoch möglichst in Einsatzreife implementieren
+    die Leistungsfähigkeit (einschliesslich Korrektheit) und Grenzen dokumentieren und mit geeigneten Mitteln nachweisen
+    die wesentlichen Konzepte so beschreiben, dass Entwickler von Encontrol diese Konzepte bei Ergänzungen des Systems nutzen können
+
+
+
+Encontrol AG entwickelt umfangreiche ERP-Software für Energieversorgungsunternehmen. Die bestehende Software soll um eine geographische Kartenansicht erweitert werden. Auf dieser Ansicht können diverse Informationen des Unternehmens angezeigt werden. Bestehende Elemente können bearbeitet und neu positioniert werden.
+
+
+Im Rahmen des Projektes sind alle erforderlichen und alle optionalen Features realisiert worden:
+
+    Professioneller Data Layer durch Repository-Pattern realisiert (erlaubt bequemen Austausch der Datenquelle)
+    MVVM (Model View ViewModel)-Pattern angewendet (erlaubt bequeme Weiterentwicklung der Software)
+    AnlageObjekte sind auf der Karte mittels Drag & Drop frei positionierbar
+    Ablesereihenfolgen resp. Routen für die Stromablesung sind bearbeitbar und können und ins ERP zurückgespeichert werden
+    Der Verbrauch von AnlageObjekten kann angezeigt werden
+    Gebietsgrenzen werden berechnet
+    Öffentliche Gebäude können angezeigt werden
+    Öffentliche Grenzen (Kantone, Gemeinden) können angezeigt werden
+
+Ausgeliefert wird die Applikation als ausführbares Binary (MapIntegration.exe).

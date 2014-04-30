@@ -1,0 +1,29 @@
+RHESSI Search for Similar Images based on Fourier Components
+
+Im Rahmen dieser Bachelor-Thesis wurde ein Content Based Image Retrieval System entwickelt. Das System wurde spezifisch für die Bilder von Sonneneruptionen des RHESSI Satelliten konzipiert und erlaubt es ähnliche Eruptionen anhand der Fourierkomponenten ihrer Bilder zu suchen.
+
+
+    CBIR - Content Based Image Retrieval
+    IDL - Interactive Data Language
+    Feature-Deskriptore
+    Neuronale Netzwerke
+
+
+Zusätzlich zu den bisherigen Möglichkeiten, eine Sonneneruption in der Datenbank zu finden, möchten neu ähnliche Sonneneruptionen anhand einer gegebenen Eruption, in Form einer Rastergrafik, gefunden werden. Der Kern der Arbeit, der Algorithmus zur Findung ähnlicher Eruptionen, arbeitet im Frequenzspektrum, wobei es gilt, spezifische Eigenschaften der Visibilities im Spektrum zu finden und auszuwerten. Um überhaupt 'ähnliche' Bilder finden zu können, muss vorhergehend mit einem Bewertungsschema definiert werden, was ein Ähnlichkeitsmass ist und wie sich dieses ausdrückt. Am Ende soll ein Prototyp, resp. wenn die Zeit es zulässt, auch ein Produktivsystem, realisiert werden, welche ähnliche Eruptionen in einem ersten Schritt anhand synthetischer Visibilitybags und später anhand echter, aus der bestehenden RHESSI Datenbank entnommenen, Visibilitybags finden kann.
+
+    Automatisiertes Generieren von synthetischen Sonneneruptionen.
+    Erstellen eines Bewertungsschemas mit Definition des Ähnlichkeitsmasses für Eruptionen.
+    Finden ähnlicher Sonneneruptionen durch geeigneten Suchalgorithmus.
+    Das System soll portierbar sein und später in Form von User Defined Functions auf die HESPE-Datenbank angewandt werden können.
+    Visualisieren von Testszenarien um Algorithmen und System zu validieren.
+    Das System soll performant in Bezug auf die Güte der ähnlich gefundenen Eruptionen sein.
+
+
+
+Das Projekt HESPE (High-Energy Solar Physics Data in Europe) hat das Ziel, Daten von Sonneneruptionen des NASA Satelliten RHESSI neu aufzubereiten und Forschern einfacher zugänglich zu machen. Zu diesem Zweck wird eine neue Datenbank aufgebaut. Die Datenbank wird kontinuierlich mit neu aufbereiteten Daten aktualisiert und kann als Basis für Forschungsarbeiten genutzt werden. Nebst dem Auffinden von spezifischen Eruptionen anhand des Zeitpunkts ihres Auftretens oder anhand ihrer physikalischen Eigenschaften, soll es neu auch möglich sein, Eruptionen auf der Basis des Bildes einer bereits gefundenen Eruption suchen zu können. Die Suche selbst soll das Bild als Suchparameter verwenden um Eruptionen, die ein ähnliches Bild ergeben, in der Datenbank zu finden.
+
+
+RheSSI FC (Kurzform für RHESSI Search for Similar Images based on Fourier Components) ist ein in IDL geschriebenes Content Based Image Retrival (CBIR) System für Bilder von Sonneneruptionen des RHESSI Satelliten.
+Bisher konnten Eruptionen in einer bereits bestehenden Datenbank an Hand ihrer physikalischen Attribute wie Zeitpunkt des Auftretens oder Energieniveau der Eruption, gesucht werden. RheSSI FC erweitert die Liste der Suchkriterien um das Bild der Eruption. Dies erlaubt es, Eruptionen, basierend auf ihrer Datenbasis zu suchen. Hierbei kann ein Forscher eine bereits bekannte, interessante Eruption suchen, ähnliche Eruptionen finden und diese beispielsweise für statistische Analysen weiter auswerten.
+Im Gegensatz zu den meisten handelsüblichen CBIR Systemen arbeitet RheSSI FC nicht auf der Basis von Rastergrafiken, sondern direkt auf den in der Datenbank gespeicherten Fourier Komponenten. Dies erlaubt es, auf eine verlustbehaftete Umrechnung der Rohdaten in Rastergrafiken zu verzichten.
+RheSSI FC kann als Eigenständige Applikation sowohl direkt über die IDL-Konsole wie auch über ein einfaches GUI bedient werden. Die Ausführbarkeit ohne GUI erlaubt es RheSSI FC auch in andere IDL Programme einzubinden.

@@ -1,0 +1,31 @@
+Berechnung von Kanalisationsrohren
+Manfred Vogel, Michael Kalt
+
+Entwickeln einer webbasierten Applikation zur Durchführung von Berechnungen an Kanalisationsrohren auf Basis des Entwurfs der neuen SIA-Norm 190.
+
+
+Um Anwendern die Einarbeitung in die neue Norm zu erleichtern, wurde in enger Zusammenarbeit mit Prof. Dr. Francesco Valli eine mass-geschneiderte und web-basierte Lösung implementiert.
+
+Mit dieser Anwendung haben Anwender die Möglichkeit, ihre Berechnungen zentral und unkompliziert durchzuführen. Weiter können Statistiken über durchgeführte Berechnungen pro Person oder Firma gesammelt und zur Verrechnung der Dienstleistung verwendet werden.
+
+
+PHP, JavaScript (jQuery), Twitter Bootstrap, CodeIgniter, MySQL
+
+
+Die während dieser Arbeit entwickelte Applikation zur Berechnung von Kanalisationsrohren soll die bis vor kurzem noch bestehende, von der FHNW Hochschule für Technik gehostete MathCAD Lösung ersetzen.
+
+Der Grund, wieso die bestehende Lösung ersetzt werden soll ist die Einstellung der Entwicklung des PTC MathCAD® Calculation Servers.
+
+Eine neue, eigens entwickelte und massgeschneiderte, web-basierte Lösung soll fortan Bauingenieuren die Möglichkeit anbieten, Kalkulationen zentral und standortunabhängig durchführen zu können. Zeitgleich dient die Anwendung dazu, dein Einstieg in die Arbeit mit der neuen Norm möglichst einfach zu gestalten.
+
+
+Die SIA-Norm 190 ist eine neue, von Prof. Francesco Valli für die SIA erarbeitete Norm, zum berechnen von Kanalisationsrohren.
+
+Das konkrete Ziel einer solchen Norm ist es, durch realitätsnahe Modellierungen von Rohren und den umgebungsbedingten Einwirkungen auf diese, deren Einsatz in bestimmten Situationen zu evaluieren.
+
+Die SIA-Norm 190 stellt eine Überarbeitung resp. eine Erweiterung der - und letzten Endes einen Ersatz für die - Vorgängernormen SIA 260, SIA 261 und SIA 267 dar. Dabei werden bewährte Methoden der Vorgänger übernommen und mit neuen Erkenntnissen ergänzt. Als konkrete Neuerung gegenüber den alten Normen, bietet die SIA 190 Anwendern die Möglichkeit die Lastausbreitung über dem Rohr sowie die Rohrbettung - und somit äussere Einflüsse - selbst zu konfigurieren.
+
+
+Auf Basis des PHP Frameworks "CodeIgniter" ist eine Web-Applikation entwickelt worden, welche so ausgelegt wurde, dass sie zukünftig einfach und schnell weiterentwickelt werden kann.
+
+Aufgrund der Tatsache, dass die SIA-Norm 190 zum aktuellen Zeitpunkt noch in Arbeit befindet, wird die Applikation auch nach Abschluss der Thesis weiter- und fertigentwickelt. 

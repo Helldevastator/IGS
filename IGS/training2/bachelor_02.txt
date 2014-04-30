@@ -1,0 +1,23 @@
+GraphDSL Querybuilder
+
+Das Finnova Banking System besteht aus 6 Millionen Zeilen Programmcode, die in hunderte untereinander verknüpfte Module organisiert sind. Bei einer derart hohen Komplexität können Zusammenhänge, zum Beispiel die Auswirkungen einer Programmänderung nur mittels Toolunterstützung präzise erfasst werden. Im Rahmen eines KTI-Projekts wurden die strukturellen Abhängigkeiten in Form eines Graphen abgebildet. Dieser Graph kann nun mit einer eigenen DSL (Domain Specific Language) nach bestimmten Mustern abgefragt werden.
+
+
+    JavaScript
+    HTML5
+    Single-page application
+    AngularJS
+    D3.js
+
+
+Ziel dieses Projektes ist die Entwicklungs eines graphischen Querybuilders, welcher einem Benutzer ohne Kenntnisse der DSL erlaubt, komplexe Abfragen auf einem Graphen zu formulieren. Der graphsiche Querybuilder soll browserbasiert, möglichst intuitiv bedienbar und benutzerfreundlich sein.
+
+
+Resultat dieser Arbeit ist ein graphischer Querybuilder, welcher einem ermöglicht, komplexe Abfragen auf einem Graphen zu formulieren, ohne dass die entsprechende Abfragesprache erlernt werden muss. Die Bedienung ist in wenigen Minuten erlernbar und der Querybuilder kann ohne grossen Aufwand um weitere Graph-Abfragesprachen erweitert werden.
+
+
+    Einfaches Erstellen von komplexen Abfragen ohne Kenntnisse der DSL
+    Benutzerfreundlich und intuitiv bedienbar
+    Live Darstellung des Resultats
+
+In der unten aufgeführten Bilder ist der Ablauf beim Erstellen einer Abfrage abgebildet.

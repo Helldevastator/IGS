@@ -1,0 +1,23 @@
+Realtime Virtual Pan & Zoom
+
+
+Ein Roboter mit einer fix montierten Fischaugenkamera wird zur Inspektion von Abwasserkanälen eingesetzt. Das aufgenommene Bild wird in Echtzeit entzerrt. Des weiteren kann der Benutzer nachträglich virtuell durch die aufgezeichneten Fischaugenbilder navigieren.
+
+
+Fischauge, Kanalinspektion, OpenGL
+
+
+    Echtzeit-Modus: Die Bilder der Fischaugenkamera sollen in Echtzeit entzerrt werden. Es soll eine herkömmliche, drehbar montierte Kamera simuliert werden.
+    Offline-Modus: Die Fischaugenbilder werden im Abstand von 5cm aufgezeichnet. Der Benutzer soll sich nachträglich virtuell in der Aufzeichnung frei drehen, entlang der Längsachse bewegen und zoomen können.
+
+
+
+Eine Software einer Drittfirma zur virtuellen Navigation in einer Aufzeichnung besteht bereits. Unter anderem aufgrund von technischen Problemen möchte die Auftraggeberin die Software durch eine Eigenentwicklung ersetzen.
+Die Kamera für den Echtzeit-Modus wurde von der Auftraggeberin zur Verfügung gestellt.
+Ein Beispiel eines Fischaugenbildes ist nachfolgend abgebildet.
+
+
+
+Für die Entzerrung im Echtzeit-Modus wurde eine exakte und eine interpolierende Variante implementiert. Keine der beiden Varianten ist dabei prinzipiell schneller als die andere, dies ist abhängig von der verwendeten Hardware. Beide Varianten erreichten mindestens 30 Frames pro Sekunde auf allen Testsystemen. Die angezeigten Bilder sind korrekt.
+
+Für den Offline-Modus wird die inspizierte Kanalröhre virtuell nachgebaut und eine virtuelle OpenGL Kamera in dieser Röhre platziert. Die Projektion des Fischaugenbildes auf die virtuelle Kanalröhre erfolgt mit leicht angepassten Versionen der Algorithmen aus dem Echtzeit-Modus. Die Geschwindigkeit war auf allen Testsystemen mit mehr als 30 Frames pro Sekunde genügend. Die angezeigten Bilder sind korrekt. 

@@ -1,0 +1,28 @@
+Android Peakflow-Logger für Asthma Patienten
+
+
+Die Suva in Luzern wünscht eine Applikation basierend auf Android Technologie, welche die Aufzeichnung von Peakflow Messwerten, Asthamasymptomen, Medikamenteneinnahme erlaubt und zusätzlichen Informationen sollten vom Programm verarbeitet und in verschiedensten Formen ausgegeben werden können. Mit dieser Applikation soll einerseits die Diagnose von Asthma am Arbeitsplatz erleichtert werden und andererseits die Betreuung von Asthmapatienten am Arbeitsplatz verbessert werden.
+
+
+Java, Android, Samsung Tablet P6800, Bluetooth
+
+
+Es soll eine Applikation entwickelt werden, welche die Aufzeichnung von Peakflow Messwerten, Asthmasymptomen, Medikamenteneinnahme erlaubt und zusätzlichen Informationen welche in Form von Freitext eingegeben werden können aufzeichnet. Diese Informationen sollten vom Programm verarbeitet und in verschiedensten Formen ausgegeben werden können. Mit dieser Applikation soll
+
+    die Diagnose von Asthma am Arbeitsplatz erleichtert
+    die Betreuung von Asthmapatienten am Arbeitsplatz verbessert werden
+
+
+
+Gewisse Substanzen am Arbeitsplatz können bei empfindlichen Individuen zu einer allergischen Entzündung der Atemwege und zu einem Asthma führen. Bei diesen Patienten ist es wichtig, die Erkrankung früh zu diagnostizieren. Dadurch kann eine weitere Exposition gegenüber diesen Substanzen vermieden und eine adäquate Behandlung schnellstmöglich begonnen werden.
+
+ 
+
+Wenn Messwerte in Tagebüchern aufgezeichnet werden müssen, besteht die Möglichkeit das Werte von den Patienten falsch aufgeschrieben werden. Aus diesem Grund hat sich der Einsatz von elektronischen Peakflow Messgeräten durchgesetzt, welche neben dem Messwert auch die Uhrzeit und der Zeitpunkt der Messung aufzeichnen können.
+
+ 
+
+Diese neuen Peakflow Messgeräte haben allerdings einige Nachteile. Eine Erfassung der Medikamenteneinnahme, der Symptome und der Lebensqualität des Patienten ist in den meisten Fällen nicht möglich. Ausserdem erlauben diese Geräte keine Eingabe von Freitext. Dies kann nützlich sein, um zum Beispiel die Tätigkeiten am Arbeitsplatz zu beschreiben welche zu einer Verschlechterung der Symptomatik geführt haben.
+
+
+Die entwickelte Applikation entspricht der Erwartungen des Kunden und besitzt eine benutzerfreundliche grafische Oberfläche, die einfach zu bedienen ist.

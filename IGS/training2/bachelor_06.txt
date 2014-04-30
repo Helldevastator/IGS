@@ -1,0 +1,29 @@
+Kinect meets Anatomy
+
+
+Das Ziel der Projektarbeit "Kinect meets Anatomy" ist es, eine Software zu entwickeln, welche es Studierenden der Medizinischen Fakultät der Universität Bern erlaubt, mithilfe von Gesten durch ein 3D-Anatomie-Modell zu navigieren. Des Weiteren soll durch ein Quiz das Anatomiewissen der Studierenden trainiert und vertieft werden können.
+
+
+    C#
+    Visual Studio 2012
+    Microsoft Kinect Sensor
+    Kinect SDK 1.0
+
+
+
+    Gestengesteuerte Navigation: Über Gesten soll es möglich sein, ein 3D-Anatomie-Modell zu zoomen, zu rotieren, zu verschieben, sowie ein Körperteil zu selektieren und grafisch hervorzuheben.
+    Alternative Steuerung: Der Benutzer soll nebst der Steuerung über Gesten das Programm über eine "Toolbox" , sowie über Sprachsteuerung kontrollieren können.
+    Tutorial: Mithilfe eines Tutorials sollen die Anwender die verfügbaren Gesten lernen und trainieren können.
+    Quiz: Es soll ein Quiz angeboten werden, welches zur Erlernung und Vertiefung der Anatomiekenntnisse der Studierenden dient.
+
+
+
+Das Microsoft Kinect SDK bietet bisweilen keinerlei Unterstützung für Gestenerkennung. Eine akkurate Gestenerkennung musste deshalb von Grund auf selbst programmiert werden. Zuweilen existiert kein vergleichbares Produkt, welches sämtliche der in der Zielsetzung genannten Punkte beinhaltet.
+Ergebnisse
+
+Nach Beendigung des Projektes wurden folgende Resultate erreicht:
+
+    Funktionierende Navigation mittels Gesten durch ein 3D-Modell
+    Alternative Steuerung mittels "Toolbox" und Sprachsteuerung
+    Tutorial zur Erlernung der Gesten
+    Quiz mit Multiple Choice und Auswahl eines Körperteils im Modell über Gesten

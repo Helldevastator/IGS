@@ -1,0 +1,45 @@
+Sicherheit im Zugang zum Firmennetz
+
+
+Basierend auf einer Sicherheitsrichtlinie für den Netzwerkzugang, den Anforderungen der Benutzer sowie einer Gegenüberstellung der Investitions- und Betriebskosten erfolgte die Wahl einer geeigneten Lösung zum Remote Access. Die Produkte Citrix Access Gateway und Microsoft DirectAccess wurden anschliessend in einer Testumgebung umgesetzt und eingehender geprüft. Zudem erfolgten eine Beurteilung der Sicherheit im internen LAN und eine Empfehlung von zusätzlich geeigneten Sicherheitsmassnahmen.
+
+
+    Netzwerk: IPv6, Teredo, 6to4, NAT64, DNS64
+    Remotezugriff: VPN, IPSec, SSL/TLS
+    Zertifikate: PKI, X.509
+    Authentifizierung: LDAP, RADIUS, 802.1X
+
+
+
+Security Policy:
+
+    Definition eines Sicherheitskonzepts
+
+Remote Access:
+
+    Anforderungsaufnahme bei den Benutzern
+    Abschätzung von Investitions-/Betriebskosten
+    Wahl einer Technologie anhand einer Kriterienliste
+    Proof of Concept in einer Testumgebung
+
+Sicherheit im LAN:
+
+    Bedrohungsanalyse und Konzept für Sicherheit im LAN
+    Proof of Concept in einer Testumgebung
+
+
+
+Die DT Swiss ist weltweit tätig mit Standorten in Polen, Taiwan, USA und der Schweiz. Die IT-Infrastruktur ist am Hauptstandort in Biel zentralisiert. Die gestiegenen Anforderungen an die Informatik sowie der markante Zuwachs der Anzahl Benutzer führten in den vergangenen Jahren zu einem stetigen Ausbau des Netzwerks und der Serverlandschaft.
+
+Die Informatikabteilung stellte zunehmend fest, dass die aktuell genutzten Sicherheitsmassnahmen innerhalb des Netzwerks nicht mehr den heutigen Standards entsprechen. Die DT Swiss gewichtete diesen Zustand, insbesondere aufgrund der markanten Zunahme an mobilen Geräten und dem Wettbewerbsumfeld der Firma, als hohes Sicherheitsrisiko.
+
+
+Als Voraussetzung wurde zunächst ein Sicherheitskonzept erstellt, das sich am IT-Grundschutz vom Bundesamt für Sicherheit in der Informationstechnik orientiert. Es erfolgte insbesondere eine Riskobewertung und die Auswahl geeigneter Sicherheitsmassnahme für Systeme, die unmittelbar für den Zugang zum Netzwerk der DT Swiss erforderlich sind.
+
+Basierend auf den Anforderungen der DT Swiss sowie einer Abschätzung der Investitions- und Betriebskosten wurden anschliessend Lösungen mehrerer Hersteller zum Remote Access miteinander verglichen. Für die praktische Umsetzung wurde eine kombinierte Lösung gewählt:
+
+Microsoft DirectAccess soll verwendet werden, um Benutzern mit dem firmeneigenen Notebook einen transparenten und permanenten Zugriff auf das Firmennetz zu ermöglichen. Der Citrix Access Gateway soll im Zusammenhang mit der vorhandenen Citrixumgebung hingegen wegen der Unterstützung zahlreicher Plattformen für den Zugang mit Heimcomputern, Geräten von Drittpersonen und Tablets genutzt werden.
+
+Beide Produkte wurden anhand eines Proof of Concept eingehender geprüft und in eine Testumgebung integriert. Es konnten erfolgreich Remotezugriffe mit dem Citrix Access Gateway und Microsoft DirectAccess realisiert werden. Trotz gewisser Vorbehalte im Bereich IPv6 wurden die beiden Produkte der DT Swiss zur Umsetzung in der Produktivumgebung empfohlen. Insbesondere Applikationen wie Citrix XenApp, die derzeit ausschliesslich IPv4 unterstützen, beeinträchtigen die einfache Integration in Remotelösungen wie Microsoft DirectAccess.
+
+Abschliessend erfolgte eine Bedrohungsanalyse zur Sicherheit im internen LAN. In einer Testumgebung wurden für ein Proof on Concept entsprechende Gegenmassnahmen geprüft. Der DT Swiss wurden insbesondere die Konfiguration von integrierten Sicherheitsmechanismen der Switches sowie die portbasierte Authentizierung mit 802.1X zur Umsetzung empfohlen.

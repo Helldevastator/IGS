@@ -1,0 +1,20 @@
+3D-Scanner
+3D-Scanner werden in verschiedensten Fachbereichen verwendet und ihre Popularität wird mit dem aufkommen von 3D-Druckern weiter zunehmen. Es existieren bereits hochqualitative Lösungen, die jedoch sehr teuer und für den Privatanwedender ungeeignet sind. In dieser Arbeit wurde untersucht, wie mit einer einfachen Webcam ein 3D-Scanner realisiert werden kann. Existierende Lösungen benutzen oft einen Drehteller und eine Kamera mit fixer Position und Ausrichtung. Um möglichst ohne Hilfsimttel auszukommen und die Kamera frei beweglich zu halten wird mit Markern auf einer Unterlage gearbeitet. Zur Bestimmung der Form wurde ein voxelbasierter Shape from Silhouette Ansatz gewählt. Damit das Resultat möglichst realistisch aussieht, wird es zudem noch texturiert.
+
+
+    3D-Scanning
+    Marker Based Pose Estimation
+    Image Segmentation
+    Visual Hull
+    Mesh Generation From Sparse Voxel Octree
+    Texture Mapping
+
+
+
+Ziel der Arbeit ist es einen kostengünstigen 3D-Scanner zu implementieren. Dieser soll mit einere monokularen Kamera (einfacher Webcam) arbeiten und möglichst ohne zusätzliche Hilfsmittel auskommen.
+
+
+Das Institut für 4D-Technologien interessiert sich für einen 3D-Scanner, der mittels einer monokularen Kamera arbeitet. Die Daten sollen so aufbereitet werden, dass sie z.B. fürs 3D-Printing verwendet werden können. Es gibt bereits verschiedene Varianten von 3D-Scannern. Viele nutzen zusätzliche Hilfsmittel wie Laser oder Kameras, die Tiefeninformationen liefern.
+
+
+Im Rahmen des Projekts wurde ein 3D-Scanner implementiert. Dieser erlaubt es mit einer freibeweglichen Kamera Bilder des zu scannenden Objekts zu machen. Dazu muss das Objekt auf einer Unterlage mit Markern platziert werden. Anhand dieser Marker wird mittels eines PnP-Solvers die Kameralage bestimmt. Die aufgenommenen Bilder werden manuell mittels GrabCut segmentiert. Aus den resultierenden Silhouetten des Objekts wird mittels einer voxelbasierten Shape From Silhouette Methode die Form bestimmt. Mittels Constrained Elastic Surface Nets wird dann ein Triangle-Mesh des gescannten Objekts erstellt. Dieses wird dann im letzten Schritt texturiert und die Textur in einem Textur-Atlas gespeichert. 

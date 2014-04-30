@@ -1,0 +1,12 @@
+Serious Game
+
+Im Rahmen dieser Bachelor-Thesis wird ein Serious Game zunächst konzeptionell und anschliessend als Software-Prototyp ausgearbeitet. Das Serious Game ist Teil eines Ausstellungskonzepts, welches im Forschungsprojekt "Digitale Medien für Schulklassenbesuche" der Fachhochschule für angwandte Psychologie erarbeitet wird und hat als Exponat den Zweck, den jungen Ausstellungsbesucherinnen und Ausstellungsbesuchern einen spezifischen Aspekt der Informatik näher zu bringen.
+
+
+libgdx, serious game, java, game design
+
+
+Für das Ausstellungskonzept "Digitale Medien für Schulklassenbesuche", welches die FHNW Hochschule für angewandte Psychologie entwickelt, soll als Exponat ein Serious Game entwickelt werden, welches Jungen und Mädchen im Alter von 12-14 Jahren für Informatik begeistern soll.
+
+
+UNO Bot ist ein UNO-Spiel, bei welchem der Spieler eine künstliche Intelligenz für das UNO-Spiel erstellen kann. Der Prototyp kann mit bis zu vier Android Tablets im Multiplayermodus gespielt werden.

@@ -1,0 +1,16 @@
+AlpApp
+
+Die AlpApp ist eine iPhone-Applikation zur Planung der Sömmerung auf Schweizer Alpen. Sie richtet sich an Alp- meister. Gestützt auf den vom Kanton verordneten Normalbesatz errechnet die App den idealen Zeitpunkt einer Alpentladung. Sie stützt sich auf manuell eingetragene Plandaten und den effektiv in der Tierverkehrsdatenbank gemeldeten Tierbewegungen.
+Mobile AlpApp
+
+
+Objective-C, iOS, SOAP, Webservice, AnimalTracing, Tierverkehrsdatenbank
+
+
+Die App soll dem Alpmeister die Planung der Sömmerung erleichtern. Sie berechnet die Ausnutzung des verordneten Normalstoss, von welchem die Direktzahlungen abhängig sind. Ein Über- oder Unternutzung der Alp kann auch ökologisch negative Folgen nach sich ziehen.
+
+
+Heute werden Tiere nicht mehr ausschliesslich an einem bestimmten Alpabzugstag, sondern häufig auch einzeln oder in kleinen Gruppen von der Alp wieder in den Ganzjahresbetrieb gebracht, dies meist gegen Ende der Sömmerungsperiode. Diese Tendenz könnte sich in den kommenden Jahren verstärken. Ein Alpmeister muss die gesetzlich festgelegten Rahmenbedingungen einhalten, um Sömmerungsbeiträge zu erhalten. Bei einer Unternutzung wird der Beitrag prozentual verringert. Bei einer Übernutzung entfällt der Anspruch auf die Beiträge teilweise bis ganz. In diesem Rahmen kann der Alpmeister mit einer guten und flexiblen Planung die Wirtschaftlichkeit der Alp optimieren, in dem er länger auf der Alp bleibt oder weitere Tiere aufnimmt. Die AlpApp hilft Schweizer Alpmeistern die Sömmerung ihrer Tiere zu optimieren, indem sie die Planung erleichtert und diese Planung laufend an die aktuelle Situation anpasst.
+
+
+Es wurde eine iOS-App entwickelt, die über den AnimalTracing-Webservice auf das Testystem der Tierverkehrsdatenbank zugreift.
