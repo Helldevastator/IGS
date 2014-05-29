@@ -1,0 +1,42 @@
+﻿#################
+## Eclipse
+#################
+
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+*.class
+local.properties
+# .classpath (dem jars and stöff)
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# nume source code uf git
+/target/classes/*
+
+#latex
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+
+*.jpg
