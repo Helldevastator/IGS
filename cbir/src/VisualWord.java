@@ -11,4 +11,8 @@ public class VisualWord {
 
 	//a placeholder for a class verification value
 	public Object verificationValue;
+	
+	public String toString() {
+		return String.valueOf(classID);
+	}
 }

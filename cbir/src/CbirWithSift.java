@@ -36,10 +36,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import mpi.cbg.fly.Feature;
 import mpi.cbg.fly.Filter;
 import mpi.cbg.fly.FloatArray2D;
@@ -54,10 +52,12 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 300;
+	private static int K = 500;
 
 	//the minimum count of members in a "visual-word" class
-	private static int MIN_CLASS_SIZE = 5;
+	private static int MIN_CLASS_SIZE = 10;
+	
+	private static int KMEANS_ITERATIONS = 10;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
@@ -70,7 +70,7 @@ public class CbirWithSift extends JFrame {
 	private static int steps = 5;
 
 	//for testing: delay time for showing images in the GUI
-	private static int wait = 1000;
+	private static int wait = 100;
 
 	public static Type distance = Type.EUCLIDIAN;
 
@@ -81,16 +81,16 @@ public class CbirWithSift extends JFrame {
 	private static double calculateDistance(float[] descriptors1, float[] descriptors2) {
 		if (descriptors1 == null || descriptors2 == null)
 			return -1;
-
 		switch (distance) {
 		case EUCLIDIAN:
-		case MANHATTEN:
 			double distanceVal = 0;
 			for (int i = 0; i < descriptors1.length; i++) {
-				distanceVal += descriptors1[i] * descriptors1[i] + descriptors2[i] * descriptors2[i];
+				double v = Math.abs(descriptors1[i] - descriptors2[i]);
+				distanceVal += v * v;
 			}
-
 			return Math.sqrt(distanceVal);
+		case MANHATTEN:
+			
 		case WEIGHTED_EUCLIDIAN:
 
 		case CHEBYSHEV:
@@ -120,7 +120,16 @@ public class CbirWithSift extends JFrame {
 	 * @return the class ID (0..k) or null if quality is not good enough
 	 */
 	public Integer doClassifyVisualWord(Feature f) {
-		return 0;
+		double minDistance = Double.MAX_VALUE;
+		Integer result = null;
+		for (VisualWord w : bagofwords) {
+			double val = calculateDistance(f.descriptor, w.descriptor);
+			if (val < minDistance) {
+				minDistance = val;
+				result = w.classID;
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -146,22 +155,23 @@ public class CbirWithSift extends JFrame {
 		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
 		for (int i = 0; i < K; i++) {
 			VisualWord w = new VisualWord();
-			Feature f = points[rand.nextInt(points.length)];
+			int r = rand.nextInt(points.length);
+			Feature f = points[r];
 			w.classID = i;
 			w.descriptor = new float[f.descriptor.length];
 			System.arraycopy(f.descriptor, 0, w.descriptor, 0, w.descriptor.length);
 			medians.add(w);
 			medianPoints.put(i, new ArrayList<Feature>());
 		}
-
+		int count = 0;
 		boolean changed = true;
-		while (changed) {
+		while (changed && count++ < KMEANS_ITERATIONS) {
 			changed = false;
 
 			for (Integer p : medianPoints.keySet())
 				medianPoints.get(p).clear();
 
-			// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
+			// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
 			for (int i = 0; i < points.length; i++) {
 				double minDist = Double.MAX_VALUE;
 				int minPoint = 0;
@@ -196,12 +206,11 @@ public class CbirWithSift extends JFrame {
 						w.descriptor = newD;
 					}
 				} else {
-					changed = true;
 					Feature f = points[rand.nextInt(points.length)];
 					System.arraycopy(f.descriptor, 0, w.descriptor, 0, f.descriptor.length);
 				}
-
 			}
+			System.out.println(count);
 		}
 		return medians;
 
