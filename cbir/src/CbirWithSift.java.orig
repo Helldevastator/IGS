@@ -268,9 +268,14 @@ public class CbirWithSift extends JFrame {
 					long startTimeDM = System.currentTimeMillis();
 					setTitle("Learning: decisionModel");
 
+<<<<<<< HEAD
 					IClassifier classifier = new StatisticClassifier(K);
 					//IClassifier classifier = new SchwambiClassifier();
+=======
+					//IClassifier classifier = new StatisticClassifier(K);
+					//IClassifier classifier = new SchwambiClassifier();
 					IClassifier classifier = new KSpecialClassifier(20);
+>>>>>>> origin/master
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 
