@@ -199,7 +199,7 @@ public class CbirWithSift extends JFrame {
 					}
 
 					for (int i = 0; i < newD.length; i++)
-						newD[i] += newD[i] / medPoints.size();
+						newD[i] = newD[i] / medPoints.size();
 
 					if (!newD.equals(w.descriptor)) {
 						changed = true;
