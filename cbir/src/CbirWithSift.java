@@ -58,7 +58,7 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 500;
+	private static int K = 100;
 
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 10;
@@ -286,7 +286,8 @@ public class CbirWithSift extends JFrame {
 					setTitle("Learning: decisionModel");
 
 					//IClassifier classifier = new StatisticClassifier(K);
-					IClassifier classifier = new SchwambiClassifier();
+					//IClassifier classifier = new SchwambiClassifier();
+					IClassifier classifier = new KSpecialClassifier(10);
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 
