@@ -58,10 +58,10 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 125;
+	private static int K = 100;
 	//the minimum count of members in a "visual-word" class
-	private static int MIN_CLASS_SIZE = 10;
-	private static int KMEANS_ITERATIONS = 10;
+	private static int MIN_CLASS_SIZE = 1;
+	private static int KMEANS_ITERATIONS = 40;
 	private static int steps = 4;
 	public static Type distance = Type.EUCLIDIAN;
 
