@@ -74,7 +74,7 @@ public class CbirWithSift extends JFrame {
 
 	//number of SIFT iterations: more steps will produce more features 
 	//default = 4
-	private static int steps = 4;
+	private static int steps = 5;
 
 	//for testing: delay time for showing images in the GUI
 	private static int wait = 0;
@@ -287,7 +287,7 @@ public class CbirWithSift extends JFrame {
 
 					//IClassifier classifier = new StatisticClassifier(K);
 					//IClassifier classifier = new SchwambiClassifier();
-					IClassifier classifier = new KSpecialClassifier(10);
+					IClassifier classifier = new KSpecialClassifier(20);
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 

@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
-import mpi.cbg.fly.Feature;
 
 
 public class KSpecialClassifier implements IClassifier {
