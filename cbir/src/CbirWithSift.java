@@ -58,12 +58,12 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 500;
-
+	private static int K = 125;
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 10;
-
 	private static int KMEANS_ITERATIONS = 10;
+	private static int steps = 4;
+	public static Type distance = Type.EUCLIDIAN;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
@@ -74,12 +74,9 @@ public class CbirWithSift extends JFrame {
 
 	//number of SIFT iterations: more steps will produce more features 
 	//default = 4
-	private static int steps = 4;
 
 	//for testing: delay time for showing images in the GUI
 	private static int wait = 0;
-
-	public static Type distance = Type.EUCLIDIAN;
 
 	public enum Type {
 		EUCLIDIAN, MANHATTEN, WEIGHTED_EUCLIDIAN, CHEBYSHEV, MIN, IRIS, NON_NORM

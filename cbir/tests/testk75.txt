@@ -1,0 +1,20 @@
+68.62745098039215
+78.43137254901961
+70.58823529411765
+62.745098039215684
+62.745098039215684
+66.66666666666666
+68.62745098039215
+98.0392156862745
+92.15686274509804
+76.47058823529412
+
+74.50980392156862
+
+	//how many visual words should be classified
+	private static int K = 75;
+	//the minimum count of members in a "visual-word" class
+	private static int MIN_CLASS_SIZE = 10;
+	private static int KMEANS_ITERATIONS = 10;
+	private static int steps = 4;
+	public static Type distance = Type.EUCLIDIAN;

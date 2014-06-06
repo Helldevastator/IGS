@@ -8,7 +8,7 @@ public class Reader {
 		String line = null;
 		double stuff = 0;
 		int count = 0;
-		while ((line = reader.readLine()) != null) {
+		while ((line = reader.readLine()) != null && !line.equals("")) {
 			stuff += Double.parseDouble(line);
 			count++;
 		}

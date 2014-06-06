@@ -1,0 +1,18 @@
+58.82352941176471
+66.66666666666666
+68.62745098039215
+74.50980392156863
+74.50980392156863
+76.47058823529412
+56.86274509803921
+78.43137254901961
+74.50980392156863
+80.3921568627451
+
+71%
+private static int K = 500;
+	//the minimum count of members in a "visual-word" class
+	private static int MIN_CLASS_SIZE = 10;
+	private static int KMEANS_ITERATIONS = 10;
+	private static int steps = 4;
+	public static Type distance = Type.EUCLIDIAN;
