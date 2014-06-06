@@ -58,11 +58,11 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 100;
+	private static int K = 200;
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 1;
 	private static int KMEANS_ITERATIONS = 40;
-	private static int steps = 4;
+	private static int steps = 5;
 	public static Type distance = Type.EUCLIDIAN;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
@@ -154,10 +154,22 @@ public class CbirWithSift extends JFrame {
 	public static List<VisualWord> doClusteringVisualWords(final Feature[] points, int K, int minCount) {
 		System.out.println("Start clustering with: " + points.length + " pkt to " + K + " classes");
 
+		KSolution current = randomSolve(points);
+		for (int i = 1; i < K; i++) {
+			KSolution newSolution = randomSolve(points);
+			if (current.distortion > newSolution.distortion)
+				current = newSolution;
+		}
+
+		return current.medians;
+
+	}
+
+	private static KSolution randomSolve(final Feature[] points) {
 		Random rand = new Random();
 		List<VisualWord> medians = new ArrayList<>(K);
 		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
-		for (int i = 0; i < K; i++) {
+		for (int i = 0; i < KMEANS_ITERATIONS; i++) {
 			VisualWord w = new VisualWord();
 			int r = rand.nextInt(points.length);
 			Feature f = points[r];
@@ -167,57 +179,31 @@ public class CbirWithSift extends JFrame {
 			medians.add(w);
 			medianPoints.put(i, new ArrayList<Feature>());
 		}
-		int count = 0;
-		boolean changed = true;
-		while (changed && count++ < KMEANS_ITERATIONS) {
-			changed = false;
 
-			for (Integer p : medianPoints.keySet())
-				medianPoints.get(p).clear();
+		for (Integer p : medianPoints.keySet())
+			medianPoints.get(p).clear();
 
-			// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
-			for (int i = 0; i < points.length; i++) {
-				double minDist = Double.MAX_VALUE;
-				int minPoint = 0;
-				for (Integer p : medianPoints.keySet()) {
+		double distortion = 0;
+		// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
+		for (int i = 0; i < points.length; i++) {
+			double minDist = Double.MAX_VALUE;
+			int minPoint = 0;
+			for (Integer p : medianPoints.keySet()) {
 
-					double dist = calculateDistance(medians.get(p).descriptor, points[i].descriptor);
-					if (dist < minDist) {
-						minDist = dist;
-						minPoint = p;
-					}
-				}
-				medianPoints.get(minPoint).add(points[i]);
-			}
-
-			//  Die Cluster-Schwerpunkte anhand aller Cluster-Objekte neu berechnen.
-			for (Integer medP : medianPoints.keySet()) {
-				List<Feature> medPoints = medianPoints.get(medP);
-				VisualWord w = medians.get(medP);
-				float[] newD = new float[w.descriptor.length];
-				if (medPoints.size() > minCount) {
-					//sum
-					for (Feature p : medPoints) {
-						for (int i = 0; i < newD.length; i++)
-							newD[i] += p.descriptor[i];
-					}
-
-					for (int i = 0; i < newD.length; i++)
-						newD[i] = newD[i] / medPoints.size();
-
-					if (!newD.equals(w.descriptor)) {
-						changed = true;
-						w.descriptor = newD;
-					}
-				} else {
-					Feature f = points[rand.nextInt(points.length)];
-					System.arraycopy(f.descriptor, 0, w.descriptor, 0, f.descriptor.length);
+				double dist = calculateDistance(medians.get(p).descriptor, points[i].descriptor);
+				if (dist < minDist) {
+					minDist = dist;
+					minPoint = p;
 				}
 			}
-			System.out.println(count);
+			distortion += minDist * minDist;
+			medianPoints.get(minPoint).add(points[i]);
 		}
-		return medians;
 
+		KSolution s = new KSolution();
+		s.distortion = distortion;
+		s.medians = medians;
+		return s;
 	}
 
 	/* Do not change anything from here */
@@ -282,8 +268,8 @@ public class CbirWithSift extends JFrame {
 					long startTimeDM = System.currentTimeMillis();
 					setTitle("Learning: decisionModel");
 
-					//IClassifier classifier = new StatisticClassifier(K);
-					IClassifier classifier = new SchwambiClassifier();
+					IClassifier classifier = new StatisticClassifier(K);
+					//IClassifier classifier = new SchwambiClassifier();
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 
