@@ -58,7 +58,7 @@ public class CbirWithSift extends JFrame {
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
 	//how many visual words should be classified
-	private static int K = 200;
+	private static int K = 100;
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 1;
 	private static int KMEANS_ITERATIONS = 10;
@@ -166,8 +166,9 @@ public class CbirWithSift extends JFrame {
 
 		List<VisualWord> medians = current.medians;
 		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
-		for (int i = 0; i < K; i++)
+		for (int i = 0; i < K; i++) {
 			medianPoints.put(i, new ArrayList<Feature>());
+		}
 
 		int count = 0;
 		boolean changed = true;
@@ -225,7 +226,7 @@ public class CbirWithSift extends JFrame {
 		Random rand = new Random();
 		List<VisualWord> medians = new ArrayList<>(K);
 		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
-		for (int i = 0; i < KMEANS_ITERATIONS; i++) {
+		for (int i = 0; i < K; i++) {
 			VisualWord w = new VisualWord();
 			int r = rand.nextInt(points.length);
 			Feature f = points[r];
