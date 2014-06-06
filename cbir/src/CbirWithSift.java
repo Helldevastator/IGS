@@ -21,6 +21,7 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,8 +37,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+
 import mpi.cbg.fly.Feature;
 import mpi.cbg.fly.Filter;
 import mpi.cbg.fly.FloatArray2D;
@@ -45,9 +48,12 @@ import mpi.cbg.fly.FloatArray2DSIFT;
 
 @SuppressWarnings("serial")
 public class CbirWithSift extends JFrame {
+	public static final Object logLock = new Object();
+	public static final String logFile1 = "tests.txt";
+
+	Thread t;
 	//helper variables for the repaint
 	IgsImage cur_image;
-
 	//the extracted visual words - model for the VisualWordHistogram 
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
 
@@ -56,21 +62,22 @@ public class CbirWithSift extends JFrame {
 
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 10;
-	
+
 	private static int KMEANS_ITERATIONS = 10;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
 	private static final String TEST_DIR = "Test";
+	public static final String logFile = null;
 	//how many images should be read from the input folders set to max for final run
 	private static int readImages = 50;
 
 	//number of SIFT iterations: more steps will produce more features 
 	//default = 4
-	private static int steps = 5;
+	private static int steps = 4;
 
 	//for testing: delay time for showing images in the GUI
-	private static int wait = 100;
+	private static int wait = 0;
 
 	public static Type distance = Type.EUCLIDIAN;
 
@@ -90,7 +97,7 @@ public class CbirWithSift extends JFrame {
 			}
 			return Math.sqrt(distanceVal);
 		case MANHATTEN:
-			
+
 		case WEIGHTED_EUCLIDIAN:
 
 		case CHEBYSHEV:
@@ -234,7 +241,7 @@ public class CbirWithSift extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 400);
 
-		Thread t = new Thread(new Runnable() {
+		t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
@@ -327,6 +334,12 @@ public class CbirWithSift extends JFrame {
 					System.out.println();
 					for (Entry<String, Integer> e : classStat.entrySet()) {
 						System.out.println("Classified " + 100 * e.getValue() / (double) total + "% as " + e.getKey() + ".");
+					}
+
+					synchronized (logLock) {
+						FileWriter fw = new FileWriter(logFile1, true); //the true will append the new data
+						fw.write(String.valueOf(success / (double) testImages.size() * 100) + "\n");//appends the string to the file
+						fw.close();
 					}
 
 				} catch (Exception _e) {
@@ -497,7 +510,12 @@ public class CbirWithSift extends JFrame {
 	}
 
 	public static void main(String[] _args) throws Exception {
-		new CbirWithSift();
+		//I know this is ugly, but I am lazy
+		Thread current = Thread.currentThread();
+		for (int i = 0; i < 10; i++) {
+			CbirWithSift s = new CbirWithSift();
+			current.sleep(4000);
+		}
 	}
 
 	private Vector<Feature> calculateSift(BufferedImage image) throws IOException {
