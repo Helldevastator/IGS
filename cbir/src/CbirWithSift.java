@@ -60,11 +60,11 @@ public class CbirWithSift extends JFrame {
 	//how many visual words should be classified
 	private static int K = 100;
 	//the minimum count of members in a "visual-word" class
-	private static int MIN_CLASS_SIZE = 1;
-	private static int KMEANS_ITERATIONS = 10;
-	private static int KMEANS_RANDOM_TRIES = 20;
+	private static int MIN_CLASS_SIZE = 10;
+	private static int KMEANS_ITERATIONS = 20;
 	private static int steps = 5;
 	public static Type distance = Type.EUCLIDIAN;
+	private static int KMEANS_RANDOM_TRIES = 20;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
