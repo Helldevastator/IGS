@@ -62,8 +62,8 @@ public class CbirWithSift extends JFrame {
 	private static int K = 100;
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 10;
-	private static int KMEANS_ITERATIONS = 0;
-	private static int steps = 5;
+	private static int KMEANS_ITERATIONS = 10;
+	private static int steps = 6;
 	public static Type distance = Type.EUCLIDIAN;
 	private static int KMEANS_RANDOM_TRIES = 1;
 
@@ -331,8 +331,8 @@ public class CbirWithSift extends JFrame {
 					setTitle("Learning: decisionModel");
 
 					//IClassifier classifier = new StatisticClassifier(K);
-					IClassifier classifier = new SchwambiClassifier();
-					//IClassifier classifier = new KSpecialClassifier(20);
+					//IClassifier classifier = new SchwambiClassifier();
+					IClassifier classifier = new KSpecialClassifier(20);
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 
