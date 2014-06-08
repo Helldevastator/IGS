@@ -56,15 +56,16 @@ public class CbirWithSift extends JFrame {
 	IgsImage cur_image;
 	//the extracted visual words - model for the VisualWordHistogram 
 	List<VisualWord> bagofwords = new Vector<VisualWord>();
+	private double kDistortion;
 
 	//how many visual words should be classified
 	private static int K = 100;
 	//the minimum count of members in a "visual-word" class
 	private static int MIN_CLASS_SIZE = 10;
-	private static int KMEANS_ITERATIONS = 20;
+	private static int KMEANS_ITERATIONS = 0;
 	private static int steps = 5;
 	public static Type distance = Type.EUCLIDIAN;
-	private static int KMEANS_RANDOM_TRIES = 20;
+	private static int KMEANS_RANDOM_TRIES = 1;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
@@ -152,7 +153,7 @@ public class CbirWithSift extends JFrame {
 	 *            the minimum number of members in each class
 	 * @return the centroides of the k-mean = visual words list
 	 */
-	public static List<VisualWord> doClusteringVisualWords(final Feature[] points, int K, int minCount) {
+	public List<VisualWord> doClusteringVisualWords(final Feature[] points, int K, int minCount) {
 		System.out.println("Start clustering with: " + points.length + " pkt to " + K + " classes");
 
 		Random rand = new Random();
@@ -172,9 +173,10 @@ public class CbirWithSift extends JFrame {
 
 		int count = 0;
 		boolean changed = true;
+		double distortion = current.distortion;
 		while (changed && count++ < KMEANS_ITERATIONS) {
 			changed = false;
-
+			distortion = 0;
 			for (Integer p : medianPoints.keySet())
 				medianPoints.get(p).clear();
 
@@ -190,6 +192,7 @@ public class CbirWithSift extends JFrame {
 						minPoint = p;
 					}
 				}
+				distortion += minDist * minDist;
 				medianPoints.get(minPoint).add(points[i]);
 			}
 
@@ -218,6 +221,8 @@ public class CbirWithSift extends JFrame {
 				}
 			}
 		}
+
+		kDistortion = distortion;
 		return medians;
 
 	}
@@ -326,8 +331,8 @@ public class CbirWithSift extends JFrame {
 					setTitle("Learning: decisionModel");
 
 					//IClassifier classifier = new StatisticClassifier(K);
-					//IClassifier classifier = new SchwambiClassifier();
-					IClassifier classifier = new KSpecialClassifier(20);
+					IClassifier classifier = new SchwambiClassifier();
+					//IClassifier classifier = new KSpecialClassifier(20);
 					classifier.learn(imageContentTrainingData);
 					long endTimeDM = System.currentTimeMillis();
 
@@ -379,7 +384,7 @@ public class CbirWithSift extends JFrame {
 
 					synchronized (logLock) {
 						FileWriter fw = new FileWriter(logFile1, true); //the true will append the new data
-						fw.write(String.valueOf(success / (double) testImages.size() * 100) + "\n");//appends the string to the file
+						fw.write(String.valueOf(success / (double) testImages.size() * 100) + ";" + kDistortion + "\n");//appends the string to the file
 						fw.close();
 					}
 
