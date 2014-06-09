@@ -21,12 +21,13 @@ public class KSpecialClassifier implements IClassifier {
 
 	}
 
+	private final double KMEANS_DISTORTION_SAVE = 6500;
 	private final int KMEANS_ITERATIONS = 10;
 	private final int COMPARE_SIZE = 3;
 	private final double COMPARE_MAX_DISTANCE = 0.4;
 
 	private final int _k;
-	public double distortion = 0;
+	public double distortion = Double.MAX_VALUE;
 	Map<String, Vector<int[]>> medians;
 
 	public KSpecialClassifier(int k) {
@@ -106,12 +107,6 @@ public class KSpecialClassifier implements IClassifier {
 	@Override
 	public void learn(Map<String, Vector<int[]>> dataSet) {
 
-		// fill arrays into one data structure
-		Vector<int[]> vectors = new Vector<>();
-		for (String classname : dataSet.keySet()) {
-			vectors.addAll(dataSet.get(classname));
-		}
-
 		// sets randomly the medians
 		Random rand = new Random();
 		Map<String, Map<Integer, Vector<int[]>>> medianPoints = new HashMap<>();
@@ -130,8 +125,25 @@ public class KSpecialClassifier implements IClassifier {
 
 		int count = 0;
 		double lastSavedDistortion = Double.MAX_VALUE;
-
+		Map<String, Vector<int[]>> savedMedians = null;
 		while (count++ < KMEANS_ITERATIONS) {
+
+			if (distortion < KMEANS_DISTORTION_SAVE && distortion < lastSavedDistortion) {
+				lastSavedDistortion = distortion;
+				savedMedians = new HashMap<>(medians.size());
+				for (String classname : dataSet.keySet()) {
+					Vector<int[]> oldHistos = medians.get(classname);
+					Vector<int[]> histograms = new Vector<>(oldHistos.size());
+					savedMedians.put(classname, histograms);
+
+					for (int i = 0; i < oldHistos.size(); i++) {
+						int[] newHisto = new int[oldHistos.get(i).length];
+						System.arraycopy(oldHistos.get(i), 0, newHisto, 0, newHisto.length);
+						histograms.add(newHisto);
+					}
+				}
+
+			}
 
 			distortion = 0;
 			for (String className : medianPoints.keySet()) {
@@ -180,6 +192,11 @@ public class KSpecialClassifier implements IClassifier {
 					}
 				}
 			}
+		}
+
+		if (lastSavedDistortion < distortion) {
+			medians = savedMedians;
+			distortion = lastSavedDistortion;
 		}
 	}
 
