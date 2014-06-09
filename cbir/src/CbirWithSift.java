@@ -66,6 +66,8 @@ public class CbirWithSift extends JFrame {
 	private static int steps = 6;
 	public static Type distance = Type.EUCLIDIAN;
 	private static int KMEANS_RANDOM_TRIES = 1;
+	private static double KMEANS_DISTORTION_SAVE = 810.0;
+	private static double KMEANS_DISTORTION_ABORT = 730.0;
 
 	private static final boolean CHOOSE_IMAGES_RANDOMLY = true;
 	private static final String TRAINING_DIR = "Training";
@@ -157,25 +159,39 @@ public class CbirWithSift extends JFrame {
 		System.out.println("Start clustering with: " + points.length + " pkt to " + K + " classes");
 
 		Random rand = new Random();
-
-		KSolution current = randomSolve(points);
-		for (int i = 1; i < KMEANS_RANDOM_TRIES; i++) {
-			KSolution newSolution = randomSolve(points);
-			if (current.distortion > newSolution.distortion)
-				current = newSolution;
-		}
-
-		List<VisualWord> medians = current.medians;
+		List<VisualWord> medians = new ArrayList<>(K);
 		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
 		for (int i = 0; i < K; i++) {
+			VisualWord w = new VisualWord();
+			int r = rand.nextInt(points.length);
+			Feature f = points[r];
+			w.classID = i;
+			w.descriptor = new float[f.descriptor.length];
+			System.arraycopy(f.descriptor, 0, w.descriptor, 0, w.descriptor.length);
+			medians.add(w);
 			medianPoints.put(i, new ArrayList<Feature>());
 		}
 
 		int count = 0;
-		boolean changed = true;
-		double distortion = current.distortion;
-		while (changed && count++ < KMEANS_ITERATIONS) {
-			changed = false;
+		double lastSavedDistortion = Double.MAX_VALUE;
+		List<VisualWord> savedMedians = null;
+		double distortion = Double.MAX_VALUE;
+		while (count++ < KMEANS_ITERATIONS && KMEANS_DISTORTION_ABORT < distortion) {
+
+			if (distortion < KMEANS_DISTORTION_SAVE && distortion < lastSavedDistortion) {
+				lastSavedDistortion = distortion;
+				savedMedians = new ArrayList<>(medians.size());
+				//deep copy
+				for (int i = 0; i < medians.size(); i++) {
+					VisualWord w = new VisualWord();
+					VisualWord tocp = medians.get(i);
+					w.classID = tocp.classID;
+					w.descriptor = new float[tocp.descriptor.length];
+					System.arraycopy(tocp.descriptor, 0, w.descriptor, 0, w.descriptor.length);
+					savedMedians.add(w);
+				}
+			}
+
 			distortion = 0;
 			for (Integer p : medianPoints.keySet())
 				medianPoints.get(p).clear();
@@ -212,7 +228,6 @@ public class CbirWithSift extends JFrame {
 						newD[i] = newD[i] / medPoints.size();
 
 					if (!newD.equals(w.descriptor)) {
-						changed = true;
 						w.descriptor = newD;
 					}
 				} else {
@@ -222,50 +237,14 @@ public class CbirWithSift extends JFrame {
 			}
 		}
 
-		kDistortion = distortion;
-		return medians;
-
-	}
-
-	private static KSolution randomSolve(final Feature[] points) {
-		Random rand = new Random();
-		List<VisualWord> medians = new ArrayList<>(K);
-		Map<Integer, List<Feature>> medianPoints = new HashMap<>(2 * K);
-		for (int i = 0; i < K; i++) {
-			VisualWord w = new VisualWord();
-			int r = rand.nextInt(points.length);
-			Feature f = points[r];
-			w.classID = i;
-			w.descriptor = new float[f.descriptor.length];
-			System.arraycopy(f.descriptor, 0, w.descriptor, 0, w.descriptor.length);
-			medians.add(w);
-			medianPoints.put(i, new ArrayList<Feature>());
+		if (lastSavedDistortion < distortion) {
+			kDistortion = lastSavedDistortion;
+			return savedMedians;
+		} else {
+			kDistortion = distortion;
+			return medians;
 		}
 
-		for (Integer p : medianPoints.keySet())
-			medianPoints.get(p).clear();
-
-		double distortion = 0;
-		// Jedes Objekt demjenigen Cluster zuordnen, dessen Schwerpunkt er am nächsten liegt.
-		for (int i = 0; i < points.length; i++) {
-			double minDist = Double.MAX_VALUE;
-			int minPoint = 0;
-			for (Integer p : medianPoints.keySet()) {
-
-				double dist = calculateDistance(medians.get(p).descriptor, points[i].descriptor);
-				if (dist < minDist) {
-					minDist = dist;
-					minPoint = p;
-				}
-			}
-			distortion += minDist * minDist;
-			medianPoints.get(minPoint).add(points[i]);
-		}
-
-		KSolution s = new KSolution();
-		s.distortion = distortion;
-		s.medians = medians;
-		return s;
 	}
 
 	/* Do not change anything from here */

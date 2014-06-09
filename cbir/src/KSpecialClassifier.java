@@ -8,6 +8,7 @@ public class KSpecialClassifier implements IClassifier {
 
 	private final int KMEANS_ITERATIONS = 10;
 	private final int _k;
+	private double distortion = 0;
 	Map<String, Vector<int[]>> medians;
 
 	public KSpecialClassifier(int k) {
@@ -59,10 +60,7 @@ public class KSpecialClassifier implements IClassifier {
 		}
 
 		int count = 0;
-		boolean changed = true;
-		double distortion = 0;
-		while (changed && count++ < KMEANS_ITERATIONS) {
-			changed = false;
+		while (count++ < KMEANS_ITERATIONS) {
 			distortion = 0;
 			for (String className : medianPoints.keySet()) {
 				Vector<int[]> data = dataSet.get(className);
@@ -102,7 +100,6 @@ public class KSpecialClassifier implements IClassifier {
 							newD[i] /= medPoints.size();
 
 						if (!newD.equals(w)) {
-							changed = true;
 							w = newD;
 						}
 					} else {
