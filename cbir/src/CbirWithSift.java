@@ -362,8 +362,9 @@ public class CbirWithSift extends JFrame {
 					}
 
 					synchronized (logLock) {
+						KSpecialClassifier ks = (KSpecialClassifier) classifier;
 						FileWriter fw = new FileWriter(logFile1, true); //the true will append the new data
-						fw.write(String.valueOf(success / (double) testImages.size() * 100) + ";" + kDistortion + "\n");//appends the string to the file
+						fw.write(String.valueOf(success / (double) testImages.size() * 100) + ";" + kDistortion + ";" + ks.distortion + "\n");//appends the string to the file
 						fw.close();
 					}
 

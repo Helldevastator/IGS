@@ -1,14 +1,32 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.Vector;
 
 public class KSpecialClassifier implements IClassifier {
 
+	private class ClassifyPoint implements Comparable<ClassifyPoint> {
+		double distance;
+		String className;
+
+		@Override
+		public int compareTo(ClassifyPoint o) {
+			return Double.compare(distance, o.distance);
+		}
+
+	}
+
 	private final int KMEANS_ITERATIONS = 10;
+	private final int COMPARE_SIZE = 3;
+	private final double COMPARE_MAX_DISTANCE = 0.4;
+
 	private final int _k;
-	private double distortion = 0;
+	public double distortion = 0;
 	Map<String, Vector<int[]>> medians;
 
 	public KSpecialClassifier(int k) {
@@ -18,20 +36,71 @@ public class KSpecialClassifier implements IClassifier {
 
 	@Override
 	public String classify(int[] histogram) {
-		String minClass = "unknown";
-		double min = Double.MAX_VALUE;
+		Map<String, Set<ClassifyPoint>> top = new HashMap<>();
 
 		//return the image class with the most VisualWords
 		for (String className : medians.keySet()) {
+			TreeSet<ClassifyPoint> set = new TreeSet<>();
+
+			top.put(className, set);
 			for (int i = 0; i < medians.get(className).size(); i++) {
 				double current = calculateDistance(histogram, medians.get(className).get(i));
-				if (current < min) {
-					min = current;
-					minClass = className;
+
+				ClassifyPoint p = new ClassifyPoint();
+				p.className = className;
+				p.distance = current;
+				set.add(p);
+				if (set.size() > COMPARE_SIZE)
+					set.pollLast();
+			}
+		}
+
+		PriorityQueue<ClassifyPoint> pq = new PriorityQueue<>();
+		for (String className : medians.keySet()) {
+			pq.addAll(top.get(className));
+		}
+
+		ArrayList<ClassifyPoint> points = new ArrayList<>(COMPARE_SIZE);
+		ClassifyPoint p0 = pq.poll();
+		points.add(p0);
+		for (int i = 1; i < COMPARE_SIZE; i++) {
+			ClassifyPoint pi = pq.poll();
+			if (p0.distance / pi.distance < COMPARE_MAX_DISTANCE)
+				points.add(pi);
+			else {
+				break;
+			}
+		}
+
+		int maxOccurence = 0;
+		double maxDistance = Double.MAX_VALUE;
+		String maxClassName = null;
+		for (String className : medians.keySet()) {
+			int occurences = 0;
+			double accDistance = 0;
+			for (int i = 0; i < points.size(); i++) {
+				if (points.get(i).className.equals(className)) {
+					occurences++;
+					accDistance += points.get(i).distance;
+				}
+			}
+
+			if (occurences >= maxOccurence) {
+				if (occurences == maxOccurence) {
+					if (maxDistance > accDistance) {
+						maxOccurence = occurences;
+						maxClassName = className;
+						maxDistance = accDistance;
+					}
+				} else {
+					maxOccurence = occurences;
+					maxClassName = className;
+					maxDistance = accDistance;
 				}
 			}
 		}
-		return minClass;
+
+		return maxClassName;
 	}
 
 	@Override
@@ -60,7 +129,10 @@ public class KSpecialClassifier implements IClassifier {
 		}
 
 		int count = 0;
+		double lastSavedDistortion = Double.MAX_VALUE;
+
 		while (count++ < KMEANS_ITERATIONS) {
+
 			distortion = 0;
 			for (String className : medianPoints.keySet()) {
 				Vector<int[]> data = dataSet.get(className);
@@ -80,7 +152,7 @@ public class KSpecialClassifier implements IClassifier {
 							minPoint = j;
 						}
 					}
-					distortion = minDist * minDist;
+					distortion += minDist * minDist;
 					medianPoints.get(className).get(minPoint).add(data.get(i));
 				}
 
