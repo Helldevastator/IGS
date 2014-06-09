@@ -21,7 +21,6 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -361,12 +360,15 @@ public class CbirWithSift extends JFrame {
 						System.out.println("Classified " + 100 * e.getValue() / (double) total + "% as " + e.getKey() + ".");
 					}
 
-					synchronized (logLock) {
-						KSpecialClassifier ks = (KSpecialClassifier) classifier;
-						FileWriter fw = new FileWriter(logFile1, true); //the true will append the new data
-						fw.write(String.valueOf(success / (double) testImages.size() * 100) + ";" + kDistortion + ";" + ks.distortion + "\n");//appends the string to the file
-						fw.close();
-					}
+					/*
+					 * synchronized (logLock) { KSpecialClassifier ks =
+					 * (KSpecialClassifier) classifier; FileWriter fw = new
+					 * FileWriter(logFile1, true); //the true will append the
+					 * new data fw.write(String.valueOf(success / (double)
+					 * testImages.size() * 100) + ";" + kDistortion + ";" +
+					 * ks.distortion + "\n");//appends the string to the file
+					 * fw.close(); }
+					 */
 
 				} catch (Exception _e) {
 					_e.printStackTrace();
@@ -537,11 +539,8 @@ public class CbirWithSift extends JFrame {
 
 	public static void main(String[] _args) throws Exception {
 		//I know this is ugly, but I am lazy
-		Thread current = Thread.currentThread();
-		for (int i = 0; i < 10; i++) {
-			CbirWithSift s = new CbirWithSift();
-			current.sleep(4000);
-		}
+
+		CbirWithSift s = new CbirWithSift();
 	}
 
 	private Vector<Feature> calculateSift(BufferedImage image) throws IOException {
